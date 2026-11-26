@@ -155,6 +155,166 @@ content:
               media: images
               path: pages
 
+      - name: categories
+        label: Rubriques
+        type: group
+        items:
+          - name: culture
+            label: Culture
+            type: file
+            path: content/categories/culture/_index.md
+            format: yaml-frontmatter
+            operations:
+              delete: false
+            fields:
+              - name: title
+                label: Nom de la rubrique
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: text
+              - name: weight
+                label: Ordre d'affichage
+                type: number
+              - name: body
+                label: Présentation
+                type: rich-text
+                options:
+                  format: markdown
+                  media: images
+                  path: pages
+
+          - name: talents
+            label: Talents
+            type: file
+            path: content/categories/talents/_index.md
+            format: yaml-frontmatter
+            operations:
+              delete: false
+            fields:
+              - name: title
+                label: Nom de la rubrique
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: text
+              - name: weight
+                label: Ordre d'affichage
+                type: number
+              - name: body
+                label: Présentation
+                type: rich-text
+                options:
+                  format: markdown
+                  media: images
+                  path: pages
+
+          - name: digital
+            label: Digital
+            type: file
+            path: content/categories/digital/_index.md
+            format: yaml-frontmatter
+            operations:
+              delete: false
+            fields:
+              - name: title
+                label: Nom de la rubrique
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: text
+              - name: weight
+                label: Ordre d'affichage
+                type: number
+              - name: body
+                label: Présentation
+                type: rich-text
+                options:
+                  format: markdown
+                  media: images
+                  path: pages
+
+          - name: society
+            label: Société
+            type: file
+            path: content/categories/societe/_index.md
+            format: yaml-frontmatter
+            operations:
+              delete: false
+            fields:
+              - name: title
+                label: Nom de la rubrique
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: text
+              - name: weight
+                label: Ordre d'affichage
+                type: number
+              - name: body
+                label: Présentation
+                type: rich-text
+                options:
+                  format: markdown
+                  media: images
+                  path: pages
+
+          - name: creativity
+            label: Créativité
+            type: file
+            path: content/categories/creativite/_index.md
+            format: yaml-frontmatter
+            operations:
+              delete: false
+            fields:
+              - name: title
+                label: Nom de la rubrique
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: text
+              - name: weight
+                label: Ordre d'affichage
+                type: number
+              - name: body
+                label: Présentation
+                type: rich-text
+                options:
+                  format: markdown
+                  media: images
+                  path: pages
+
+          - name: vibrance
+            label: Vibrance
+            type: file
+            path: content/categories/vibrance/_index.md
+            format: yaml-frontmatter
+            operations:
+              delete: false
+            fields:
+              - name: title
+                label: Nom de la rubrique
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: text
+              - name: weight
+                label: Ordre d'affichage
+                type: number
+              - name: body
+                label: Présentation
+                type: rich-text
+                options:
+                  format: markdown
+                  media: images
+                  path: pages
+
 settings:
   content:
     merge: true
