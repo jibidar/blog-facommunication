@@ -44,7 +44,7 @@ hugo --minify
 
 ## Publication — à effectuer après validation
 
-Le workflow `.github/workflows/deploy.yml` est prévu pour déployer la branche `main` sur GitHub Pages. La branche de préparation `setup/initial-hugo-foundation` n'est pas destinée à être publiée directement.
+Le workflow `.github/workflows/deploy.yml` est volontairement déclenchable **manuellement uniquement** (`workflow_dispatch`). Aucun push ni aucune fusion ne déclenche une publication automatique. Il ne devra être lancé qu'après validation du site et accord explicite. La branche de préparation `setup/initial-hugo-foundation` n'est pas destinée à être publiée directement.
 
 Avant la première publication :
 - vérifier le rendu sur ordinateur et mobile ;
