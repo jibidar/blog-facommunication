@@ -34,7 +34,7 @@
   <div class="container">
     <div class="section-heading"><div><p class="eyebrow">À LIRE ET À DÉCOUVRIR</p><h2>À la une</h2></div><p>Les dernières histoires à découvrir.</p></div>
     <div class="article-grid">
-      {{ range first 3 (where site.RegularPages "Section" "in" (slice "culture" "talents" "digital" "societe" "creativite" "vibrance")) }}
+      {{ range first 3 (where site.RegularPages "Section" "eq" "articles") }}
       <article class="article-card">
         {{ with .Params.cover }}<a class="article-cover" href="{{ $.RelPermalink }}"><img src="{{ . | relURL }}" alt="" loading="lazy"></a>{{ else }}<a class="article-cover cover-placeholder" href="{{ .RelPermalink }}"><span>WO</span></a>{{ end }}
         <div class="article-body"><p class="article-meta">{{ with .Params.categories }}{{ index . 0 }} · {{ end }}{{ .Date | time.Format "2 January 2006" }}</p><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3><p>{{ .Description | default .Summary | plainify | truncate 135 }}</p><a class="text-link" href="{{ .RelPermalink }}">Lire l'article →</a></div>
