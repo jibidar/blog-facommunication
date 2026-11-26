@@ -1,0 +1,51 @@
+media:
+  - name: images
+    label: Images
+    input: static/images
+    output: /images
+
+content:
+  - name: articles
+    label: Articles
+    type: collection
+    path: content
+    filename: "{year}/{month}/{slug}.md"
+    view:
+      fields: [title, date, categories, draft]
+      primary: title
+      sort: [date, title]
+    fields:
+      - name: title
+        label: Titre
+        type: string
+        required: true
+      - name: date
+        label: Date de publication
+        type: date
+        required: true
+      - name: draft
+        label: Brouillon
+        type: boolean
+        default: true
+      - name: description
+        label: Résumé
+        type: text
+      - name: categories
+        label: Rubrique
+        type: string
+        required: true
+      - name: tags
+        label: Mots-clés
+        type: string
+      - name: author
+        label: Auteur
+        type: string
+        default: FA Communication
+      - name: cover
+        label: Image de couverture
+        type: image
+        options:
+          media: images
+      - name: body
+        label: Contenu de l'article
+        type: rich-text
