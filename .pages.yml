@@ -38,11 +38,20 @@ content:
         label: Résumé
         type: text
       - name: categories
-        label: Rubrique
-        type: string
-        list: true
+        label: Rubriques
+        type: select
         required: true
-        description: "Une entrée par rubrique. Rubriques actuelles : Culture, Talents, Digital, Société, Créativité et Vibrance. Pour créer une nouvelle rubrique, demander l'ajout de sa page éditoriale dans content/categories/."
+        description: "Choisir une ou plusieurs rubriques. Pour ajouter une nouvelle rubrique, elle devra d'abord être créée dans Pages du blog → Rubriques et ajoutée ici dans la liste."
+        options:
+          multiple: true
+          min: 1
+          values:
+            - Culture
+            - Talents
+            - Digital
+            - Société
+            - Créativité
+            - Vibrance
       - name: tags
         label: Mots-clés
         type: string
