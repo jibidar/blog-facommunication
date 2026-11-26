@@ -3,13 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ .Description | default site.Params.description }}">
+  <meta name="theme-color" content="#d71920">
+  <meta name="description" content="{{ .Description | default site.Params.description | plainify | htmlEscape }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="{{ site.Title }}">
+  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
+  <meta property="og:description" content="{{ .Description | default site.Params.description | plainify | htmlEscape }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{ with .Params.cover }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+  <meta name="twitter:card" content="{{ if .Params.cover }}summary_large_image{{ else }}summary{{ end }}">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  <link rel="alternate" type="application/rss+xml" title="{{ site.Title }} — Flux RSS" href="{{ "/index.xml" | relURL }}">
+  <link rel="icon" type="image/svg+xml" href="{{ "/favicon.svg" | relURL }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{ if .IsPage }}<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "BlogPosting" "headline" .Title "description" (.Description | default .Summary | plainify) "datePublished" (.Date.Format "2006-01-02") "author" (dict "@type" "Organization" "name" (.Params.author | default site.Params.defaultAuthor)) "mainEntityOfPage" .Permalink | jsonify | safeJS }}</script>{{ end }}
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -21,7 +34,8 @@
       </a>
       <nav class="main-nav" aria-label="Navigation principale">
         {{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
-        {{ with site.GetPage "/categories" }}{{ range .Pages.ByTitle }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ end }}
+        {{ with site.GetPage "/categories" }}{{ range .Pages.ByWeight }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ end }}
+        <a href="{{ "/recherche/" | relURL }}">Recherche</a>
       </nav>
     </div>
   </header>
@@ -29,7 +43,11 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div><strong>Wo</strong><p>Le blog de FA Communication</p><p class="footer-tagline">{{ site.Params.tagline }}</p></div>
-      <div class="footer-links"><p>Un média de <a href="https://facommunication.tg/">FA Communication</a>.</p><p><a href="{{ "/a-propos/" | relURL }}">À propos</a> · <a href="{{ "/contact/" | relURL }}">Contact</a></p></div>
+      <div class="footer-links">
+        <p>Un média de <a href="https://facommunication.tg/" target="_blank" rel="noopener noreferrer">FA Communication</a>.</p>
+        <p><a href="{{ "/a-propos/" | relURL }}">À propos</a> · <a href="{{ "/contact/" | relURL }}">Contact</a></p>
+        <p><a href="{{ "/mentions-legales/" | relURL }}">Mentions légales</a> · <a href="{{ "/confidentialite/" | relURL }}">Confidentialité</a> · <a href="{{ "/index.xml" | relURL }}">Flux RSS</a></p>
+      </div>
     </div>
   </footer>
 </body>
