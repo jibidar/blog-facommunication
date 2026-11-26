@@ -12,6 +12,7 @@ content:
     label: Articles
     type: collection
     path: content/articles
+    format: yaml-frontmatter
     filename: "{year}-{month}-{day}-{primary}.md"
     view:
       fields: [title, date, categories, draft]
@@ -41,7 +42,7 @@ content:
         type: string
         list: true
         required: true
-        description: "Une entrée par rubrique. Rubriques actuelles : Culture, Talents, Digital, Société, Créativité et Vibrance. Pour créer une nouvelle rubrique dans le menu, faire ajouter sa page éditoriale au dossier content/categories/."
+        description: "Une entrée par rubrique. Rubriques actuelles : Culture, Talents, Digital, Société, Créativité et Vibrance. Pour créer une nouvelle rubrique, demander l'ajout de sa page éditoriale dans content/categories/."
       - name: tags
         label: Mots-clés
         type: string
@@ -63,3 +64,97 @@ content:
           format: markdown
           media: images
           path: articles
+
+  - name: editorial-pages
+    label: Pages du blog
+    type: group
+    items:
+      - name: about
+        label: À propos
+        type: file
+        path: content/a-propos.md
+        format: yaml-frontmatter
+        operations:
+          delete: false
+        fields:
+          - name: title
+            label: Titre
+            type: string
+            required: true
+          - name: description
+            label: Description SEO
+            type: text
+          - name: body
+            label: Contenu
+            type: rich-text
+            options:
+              format: markdown
+              media: images
+              path: pages
+
+      - name: contact
+        label: Contact
+        type: file
+        path: content/contact.md
+        format: yaml-frontmatter
+        operations:
+          delete: false
+        fields:
+          - name: title
+            label: Titre
+            type: string
+            required: true
+          - name: description
+            label: Description SEO
+            type: text
+          - name: body
+            label: Contenu
+            type: rich-text
+            options:
+              format: markdown
+              media: images
+              path: pages
+
+      - name: legal
+        label: Mentions légales (brouillon)
+        type: file
+        path: content/mentions-legales.md
+        format: yaml-frontmatter
+        operations:
+          delete: false
+        fields:
+          - name: title
+            label: Titre
+            type: string
+            required: true
+          - name: body
+            label: Contenu
+            type: rich-text
+            options:
+              format: markdown
+              media: images
+              path: pages
+
+      - name: privacy
+        label: Confidentialité (brouillon)
+        type: file
+        path: content/confidentialite.md
+        format: yaml-frontmatter
+        operations:
+          delete: false
+        fields:
+          - name: title
+            label: Titre
+            type: string
+            required: true
+          - name: body
+            label: Contenu
+            type: rich-text
+            options:
+              format: markdown
+              media: images
+              path: pages
+
+settings:
+  content:
+    merge: true
