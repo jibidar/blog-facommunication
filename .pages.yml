@@ -41,11 +41,12 @@ content:
         type: string
         list: true
         required: true
-        description: "Saisir une rubrique existante : Culture, Talents, Digital, Société, Créativité ou Vibrance. De nouvelles rubriques pourront être ajoutées."
+        description: "Une entrée par rubrique. Rubriques actuelles : Culture, Talents, Digital, Société, Créativité et Vibrance. Vous pouvez ajouter une nouvelle rubrique en saisissant son nom."
       - name: tags
         label: Mots-clés
         type: string
         list: true
+        description: "Saisir un mot-clé par entrée. Ne pas séparer plusieurs mots-clés par des virgules."
       - name: author
         label: Auteur
         type: string
