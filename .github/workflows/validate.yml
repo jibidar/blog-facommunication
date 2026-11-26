@@ -22,7 +22,7 @@ jobs:
       - name: Install Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: latest
+          hugo-version: 0.170.1
           extended: true
 
       - name: Check search script syntax
@@ -52,3 +52,13 @@ jobs:
           python -m json.tool public/index.json > /dev/null
           grep -q "Bienvenue dans l'univers de Wo" public/categories/culture/index.html
           grep -q "Bienvenue dans l'univers de Wo" public/articles/index.html
+
+      - name: Verify production excludes editorial drafts
+        run: |
+          set -eu
+          hugo --minify --destination public-production
+          test -s public-production/index.html
+          test -s public-production/recherche/index.html
+          test ! -e public-production/mentions-legales/index.html
+          test ! -e public-production/confidentialite/index.html
+          ! grep -q "Bienvenue dans l'univers de Wo" public-production/index.json
