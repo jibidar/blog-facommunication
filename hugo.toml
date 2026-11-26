@@ -24,3 +24,12 @@ summaryLength = 28
     name = "Accueil"
     pageRef = "/"
     weight = 1
+
+  [[menus.main]]
+    name = "À propos"
+    pageRef = "/a-propos/"
+    weight = 20
+  [[menus.main]]
+    name = "Contact"
+    pageRef = "/contact/"
+    weight = 21
