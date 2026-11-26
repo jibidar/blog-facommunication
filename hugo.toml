@@ -24,27 +24,3 @@ summaryLength = 28
     name = "Accueil"
     pageRef = "/"
     weight = 1
-  [[menus.main]]
-    name = "Culture"
-    pageRef = "/categories/culture/"
-    weight = 2
-  [[menus.main]]
-    name = "Talents"
-    pageRef = "/categories/talents/"
-    weight = 3
-  [[menus.main]]
-    name = "Digital"
-    pageRef = "/categories/digital/"
-    weight = 4
-  [[menus.main]]
-    name = "Société"
-    pageRef = "/categories/societe/"
-    weight = 5
-  [[menus.main]]
-    name = "Créativité"
-    pageRef = "/categories/creativite/"
-    weight = 6
-  [[menus.main]]
-    name = "Vibrance"
-    pageRef = "/categories/vibrance/"
-    weight = 7
