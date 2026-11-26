@@ -1,0 +1,11 @@
+{{ define "main" }}
+<section class="container search-page">
+  <p class="eyebrow"><a href="{{ "/" | relURL }}">ACCUEIL</a> / EXPLORER</p>
+  <header class="listing-header"><h1>Que souhaitez-vous découvrir ?</h1><p>Recherchez un article, un talent, une idée ou un sujet dans l'univers de Wo.</p></header>
+  <label class="search-label" for="site-search">Votre recherche</label>
+  <input id="site-search" class="search-input" type="search" placeholder="Ex. culture, innovation, musique…" autocomplete="off">
+  <p id="search-status" class="search-status" role="status" aria-live="polite">Saisissez au moins deux caractères.</p>
+  <div id="search-results" class="article-grid"></div>
+</section>
+{{ $js := resources.Get "js/search.js" | minify | fingerprint }}<script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}
