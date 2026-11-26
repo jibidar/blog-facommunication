@@ -3,28 +3,30 @@ languageCode = "fr-fr"
 defaultContentLanguage = "fr"
 title = "Wo — Le blog de FA Communication"
 enableRobotsTXT = true
-summaryLength = 28
-
+summaryLength = 32
 [pagination]
   pagerSize = 9
-
 [taxonomies]
   category = "categories"
   tag = "tags"
-
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
 [params]
-  description = "La curiosité ouvre le monde."
+  description = "La curiosité ouvre le monde. Culture, talents, idées et innovations qui font bouger l'Afrique."
   tagline = "La curiosité ouvre le monde."
   mascot = "/images/wo/wo.png"
   brandName = "Wo"
   brandSubtitle = "Le blog de FA Communication"
-
+  defaultAuthor = "FA Communication"
 [menus]
   [[menus.main]]
     name = "Accueil"
     pageRef = "/"
     weight = 1
-
+  [[menus.main]]
+    name = "Articles"
+    pageRef = "/articles/"
+    weight = 10
   [[menus.main]]
     name = "À propos"
     pageRef = "/a-propos/"
