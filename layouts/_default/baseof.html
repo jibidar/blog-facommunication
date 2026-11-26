@@ -21,6 +21,7 @@
       </a>
       <nav class="main-nav" aria-label="Navigation principale">
         {{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+        {{ with site.GetPage "/categories" }}{{ range .Pages.ByTitle }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ end }}
       </nav>
     </div>
   </header>
