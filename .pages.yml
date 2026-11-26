@@ -41,7 +41,7 @@ content:
         type: string
         list: true
         required: true
-        description: "Une entrée par rubrique. Rubriques actuelles : Culture, Talents, Digital, Société, Créativité et Vibrance. Vous pouvez ajouter une nouvelle rubrique en saisissant son nom."
+        description: "Une entrée par rubrique. Rubriques actuelles : Culture, Talents, Digital, Société, Créativité et Vibrance. Pour créer une nouvelle rubrique dans le menu, faire ajouter sa page éditoriale au dossier content/categories/."
       - name: tags
         label: Mots-clés
         type: string
