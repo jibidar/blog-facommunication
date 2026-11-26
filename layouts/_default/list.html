@@ -2,25 +2,26 @@
 <section class="container listing-page">
   <p class="eyebrow"><a href="{{ "/" | relURL }}">ACCUEIL</a> / {{ if eq .Section "categories" }}RUBRIQUE{{ else }}LECTURE{{ end }}</p>
   <header class="listing-header"><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}{{ with .Content }}<div class="section-intro prose">{{ . }}</div>{{ end }}</header>
-  {{ $pages := .Paginator.Pages }}
+  {{ $pages := .Pages }}
   {{ if eq .Section "categories" }}
     {{ $allArticles := where site.RegularPages "Section" "eq" "articles" }}
     {{ $pages = where $allArticles "Params.categories" "intersect" (slice .Title) }}
-    {{ $pages = $pages.ByDate.Reverse }}
   {{ end }}
+  {{ $paginator := .Paginate $pages }}
   <div class="article-grid">
-    {{ range $pages }}
+    {{ range $paginator.Pages }}
+    {{ $article := . }}
     <article class="article-card">
-      {{ with .Params.cover }}<a class="article-cover" href="{{ $.RelPermalink }}"><img src="{{ . | relURL }}" alt="{{ $.Title | plainify }}" loading="lazy"></a>{{ else }}<a class="article-cover cover-placeholder" href="{{ .RelPermalink }}" aria-label="Lire {{ .Title }}"><span>WO</span></a>{{ end }}
-      <div class="article-body"><p class="article-meta">{{ with .Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "02/01/2006" }}</time></p><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2><p>{{ .Description | default .Summary | plainify | truncate 145 }}</p><a class="text-link" href="{{ .RelPermalink }}">Lire l'article <span aria-hidden="true">→</span></a></div>
+      {{ with $article.Params.cover }}<a class="article-cover" href="{{ $article.RelPermalink }}"><img src="{{ . | relURL }}" alt="{{ $article.Title | plainify }}" loading="lazy"></a>{{ else }}<a class="article-cover cover-placeholder" href="{{ $article.RelPermalink }}" aria-label="Lire {{ $article.Title }}"><span>WO</span></a>{{ end }}
+      <div class="article-body"><p class="article-meta">{{ with $article.Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ $article.Date.Format "2006-01-02" }}">{{ $article.Date | time.Format "02/01/2006" }}</time></p><h2><a href="{{ $article.RelPermalink }}">{{ $article.Title }}</a></h2><p>{{ $article.Description | default $article.Summary | plainify | truncate 145 }}</p><a class="text-link" href="{{ $article.RelPermalink }}">Lire l'article <span aria-hidden="true">→</span></a></div>
     </article>
     {{ else }}<div class="empty-state"><h2>Les découvertes arrivent bientôt.</h2><p>Cette rubrique se prépare. Wo reviendra avec des histoires à partager.</p></div>{{ end }}
   </div>
-  {{ if and (ne .Section "categories") (gt .Paginator.TotalPages 1) }}
+  {{ if gt $paginator.TotalPages 1 }}
   <nav class="pagination" aria-label="Pagination">
-    {{ with .Paginator.Prev }}<a href="{{ .URL }}">← Précédent</a>{{ end }}
-    <span>Page {{ .Paginator.PageNumber }} sur {{ .Paginator.TotalPages }}</span>
-    {{ with .Paginator.Next }}<a href="{{ .URL }}">Suivant →</a>{{ end }}
+    {{ with $paginator.Prev }}<a href="{{ .URL }}">← Précédent</a>{{ end }}
+    <span>Page {{ $paginator.PageNumber }} sur {{ $paginator.TotalPages }}</span>
+    {{ with $paginator.Next }}<a href="{{ .URL }}">Suivant →</a>{{ end }}
   </nav>
   {{ end }}
 </section>
