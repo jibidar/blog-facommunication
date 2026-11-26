@@ -1,21 +1,32 @@
 # Wo — Le blog de FA Communication
 
-Site éditorial indépendant de FA Communication, construit avec Hugo et destiné à être publié sur GitHub Pages à l'adresse https://blog.facommunication.tg.
+Blog éditorial francophone de FA Communication, construit avec Hugo, hébergé gratuitement sur GitHub Pages et administré avec Pages CMS.
 
 ## Identité éditoriale
 
 - Nom : **Wo**
 - Signature : **Le blog de FA Communication**
-- Accroche de travail : **La curiosité ouvre le monde.**
-- Couleurs : rouge et blanc pour l'interface, jaune pour la mascotte Wo.
+- Accroche : **La curiosité ouvre le monde.**
 - Rubriques : Culture, Talents, Digital, Société, Créativité et Vibrance.
+- Mascotte : ajouter le fichier original à `static/images/wo/wo.png` (ne pas remplacer par une autre illustration).
 
-## Technologies
+## Architecture
 
-- Hugo : génération du site statique.
-- GitHub : dépôt et gestion des contenus.
-- GitHub Actions : compilation et déploiement.
-- Pages CMS : interface éditoriale à configurer et valider.
+- **Hugo** génère le site statique.
+- **Pages CMS** permet de rédiger les articles et de gérer les images depuis le navigateur.
+- **GitHub Actions** vérifie chaque modification et prépare le déploiement.
+- **GitHub Pages** héberge le site sans frais sur un dépôt public.
+
+## Rédaction
+
+Dans Pages CMS, ouvrir la collection **Articles** :
+1. Créer un article avec un titre, une date et un résumé.
+2. Laisser **Brouillon** activé tant que le texte n'est pas prêt.
+3. Choisir une rubrique et saisir les mots-clés séparément (une entrée par mot-clé).
+4. Ajouter une image de couverture horizontale de bonne qualité.
+5. Relire l'aperçu, puis désactiver Brouillon uniquement lorsque l'article est prêt à paraître.
+
+Les rubriques existantes sont dans `content/categories/`. Pour ajouter une rubrique, créer un dossier avec un fichier `_index.md`, un titre, une description et un poids d'affichage. Ajouter ensuite son nom dans les catégories des articles concernés.
 
 ## Développement local
 
@@ -25,18 +36,25 @@ Installer Hugo Extended, puis lancer :
 hugo server -D
 ```
 
-Le site est disponible localement à l'adresse indiquée par Hugo (généralement http://localhost:1313).
+Pour produire le site :
 
-## Publication
+```sh
+hugo --minify
+```
 
-Le workflow GitHub Actions est préparé pour compiler le site et le déployer sur GitHub Pages lors d'un push sur `main`. Avant la première publication, sélectionner **GitHub Actions** comme source de déploiement dans les paramètres Pages du dépôt.
+## Publication — à effectuer après validation
 
-Le domaine personnalisé et le DNS seront configurés séparément, uniquement après validation du site et vérification de la configuration DNS existante.
+Le workflow `.github/workflows/deploy.yml` est prévu pour déployer la branche `main` sur GitHub Pages. La branche de préparation `setup/initial-hugo-foundation` n'est pas destinée à être publiée directement.
 
-## Mascotte
+Avant la première publication :
+- vérifier le rendu sur ordinateur et mobile ;
+- ajouter la mascotte originale ;
+- compléter et faire vérifier les mentions légales et la politique de confidentialité ;
+- vérifier les paramètres GitHub Pages et l'absence de conflit avec un déploiement existant ;
+- préparer le domaine personnalisé uniquement après accord explicite et vérification DNS.
 
-Le fichier de la mascotte devra être placé dans `static/images/wo/wo.png`. Le nom et le chemin de l'image sont configurables dans `hugo.toml`. Le fichier original de Wo n'a pas encore été ajouté au dépôt.
+Le domaine souhaité est `blog.facommunication.tg`. Aucun changement DNS n'est autorisé à ce stade.
 
 ## Sécurité et périmètre
 
-Ce projet utilise uniquement le dépôt `jibidar/blog-facommunication`. Le dépôt du site principal `jibidar/facommunication.tg` et sa configuration DNS ne doivent pas être modifiés dans le cadre de ce projet.
+Ce projet utilise exclusivement le dépôt `jibidar/blog-facommunication`. Le dépôt `jibidar/facommunication.tg`, le site principal et sa configuration DNS sont hors périmètre et ne doivent pas être modifiés.
