@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default "fr-fr" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Description | default site.Params.description }}">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ "/" | relURL }}" aria-label="Wo, le blog de FA Communication — accueil">
+        <img class="brand-mascot" src="{{ site.Params.mascot | relURL }}" alt="" onerror="this.hidden=true">
+        <span class="brand-copy"><strong>Wo</strong><small>Le blog de FA Communication</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        {{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+      </nav>
+    </div>
+  </header>
+  <main id="contenu">{{ block "main" . }}{{ end }}</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>Wo</strong><p>Le blog de FA Communication</p><p class="footer-tagline">{{ site.Params.tagline }}</p></div>
+      <p>Un média de <a href="https://facommunication.tg/">FA Communication</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
