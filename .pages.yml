@@ -3,17 +3,23 @@ media:
     label: Images
     input: static/images
     output: /images
+    categories: [image]
+    extensions: [png, jpg, jpeg, webp, gif, svg]
+    rename: safe
 
 content:
   - name: articles
     label: Articles
     type: collection
-    path: content
-    filename: "{year}/{month}/{slug}.md"
+    path: content/articles
+    filename: "{year}-{month}-{day}-{primary}.md"
     view:
       fields: [title, date, categories, draft]
       primary: title
       sort: [date, title]
+      default:
+        sort: date
+        order: desc
     fields:
       - name: title
         label: Titre
@@ -33,10 +39,13 @@ content:
       - name: categories
         label: Rubrique
         type: string
+        list: true
         required: true
+        description: "Saisir une rubrique existante : Culture, Talents, Digital, Société, Créativité ou Vibrance. De nouvelles rubriques pourront être ajoutées."
       - name: tags
         label: Mots-clés
         type: string
+        list: true
       - name: author
         label: Auteur
         type: string
@@ -49,3 +58,7 @@ content:
       - name: body
         label: Contenu de l'article
         type: rich-text
+        options:
+          format: markdown
+          media: images
+          path: articles
