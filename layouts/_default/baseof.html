@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-  {{ if .IsPage }}<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "BlogPosting" "headline" .Title "description" (.Description | default .Summary | plainify) "datePublished" (.Date.Format "2006-01-02") "author" (dict "@type" "Organization" "name" (.Params.author | default site.Params.defaultAuthor)) "mainEntityOfPage" .Permalink | jsonify | safeJS }}</script>{{ end }}
+  {{ if and .IsPage (eq .Section "articles") }}<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "BlogPosting" "headline" .Title "description" (.Description | default .Summary | plainify) "datePublished" (.Date.Format "2006-01-02") "author" (dict "@type" "Organization" "name" (.Params.author | default site.Params.defaultAuthor)) "mainEntityOfPage" .Permalink | jsonify | safeJS }}</script>{{ end }}
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
