@@ -1,2 +1,2 @@
 # blog-facommunication
-Blog éditorial officiel de FA Communication
+Blog éditorial officiel de FA communication
