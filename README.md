@@ -26,7 +26,9 @@ Dans Pages CMS, ouvrir la collection **Articles** :
 4. Ajouter une image de couverture horizontale de bonne qualité.
 5. Relire l'aperçu, puis désactiver Brouillon uniquement lorsque l'article est prêt à paraître.
 
-Les pages **À propos**, **Contact**, **Mentions légales**, **Confidentialité** et les six rubriques sont également exposées dans Pages CMS, dans le groupe **Pages du blog**. Les deux pages juridiques restent des brouillons : leur statut de brouillon est conservé et elles ne doivent pas être publiées avant validation.\n\nLes rubriques existantes peuvent être modifiées depuis le groupe **Pages du blog → Rubriques**. Pour ajouter une nouvelle rubrique, il faut encore créer un dossier avec `_index.md`, définir son titre, sa description et son poids d'affichage, puis ajouter son nom dans les catégories des articles concernés et dans la configuration CMS.
+Les pages **À propos**, **Contact**, **Mentions légales**, **Confidentialité** et les six rubriques sont également exposées dans Pages CMS, dans le groupe **Pages du blog**. Les deux pages juridiques restent des brouillons : leur statut de brouillon est conservé et elles ne doivent pas être publiées avant validation.
+
+Les rubriques existantes peuvent être modifiées depuis le groupe **Pages du blog → Rubriques**. Pour ajouter une nouvelle rubrique, il faut encore créer un dossier avec `_index.md`, définir son titre, sa description et son poids d'affichage, puis ajouter son nom dans les catégories des articles concernés et dans la configuration CMS.
 
 ## Développement local
 
