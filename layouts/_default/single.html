@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ if eq .Section "articles" }}
 <article class="container article-page">
   <p class="eyebrow"><a href="{{ "/" | relURL }}">ACCUEIL</a> / <a href="{{ "/articles/" | relURL }}">ARTICLES</a></p>
   <header class="article-header">
@@ -16,4 +17,11 @@
     {{ with .NextInSection }}<a href="{{ .RelPermalink }}"><small>Article suivant</small><strong>{{ .Title }}</strong></a>{{ end }}
   </nav>
 </article>
+{{ else }}
+<article class="container prose-page">
+  <p class="eyebrow"><a href="{{ "/" | relURL }}">ACCUEIL</a> / WO</p>
+  <header class="prose-page-header"><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}</header>
+  <div class="prose">{{ .Content }}</div>
+</article>
+{{ end }}
 {{ end }}
