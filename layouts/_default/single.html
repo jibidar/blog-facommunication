@@ -1,0 +1,8 @@
+{{ define "main" }}
+<article class="container article-page">
+  <p class="eyebrow"><a href="{{ "/" | relURL }}">ACCUEIL</a> / ARTICLE</p>
+  <header class="article-header"><p class="article-meta">{{ with .Params.categories }}{{ delimit . ", " }} · {{ end }}{{ .Date | time.Format "2 January 2006" }}</p><h1>{{ .Title }}</h1>{{ with .Description }}<p class="article-lead">{{ . }}</p>{{ end }}</header>
+  {{ with .Params.cover }}<img class="article-feature-image" src="{{ . | relURL }}" alt="">{{ end }}
+  <div class="prose">{{ .Content }}</div>
+</article>
+{{ end }}
