@@ -6,7 +6,7 @@
     {{ range .Paginator.Pages }}
     <article class="article-card">
       {{ with .Params.cover }}<a class="article-cover" href="{{ $.RelPermalink }}"><img src="{{ . | relURL }}" alt="" loading="lazy"></a>{{ else }}<a class="article-cover cover-placeholder" href="{{ .RelPermalink }}"><span>WO</span></a>{{ end }}
-      <div class="article-body"><p class="article-meta">{{ .Date | time.Format "2 January 2006" }}</p><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3><p>{{ .Description | default .Summary | plainify | truncate 135 }}</p><a class="text-link" href="{{ .RelPermalink }}">Lire l'article →</a></div>
+      <div class="article-body"><p class="article-meta">{{ .Date | time.Format "02/01/2006" }}</p><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3><p>{{ .Description | default .Summary | plainify | truncate 135 }}</p><a class="text-link" href="{{ .RelPermalink }}">Lire l'article →</a></div>
     </article>
     {{ else }}<div class="empty-state"><h3>Cette rubrique se prépare.</h3><p>Wo revient bientôt avec de nouvelles découvertes.</p></div>{{ end }}
   </div>
