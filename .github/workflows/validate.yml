@@ -25,6 +25,9 @@ jobs:
           hugo-version: 0.170.1
           extended: true
 
+      - name: Validate Pages CMS configuration syntax
+        run: ruby -e 'require "yaml"; YAML.load_file(".pages.yml"); puts "Pages CMS YAML is valid"'
+
       - name: Check search script syntax
         run: node --check assets/js/search.js
 
