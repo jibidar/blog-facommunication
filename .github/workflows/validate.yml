@@ -25,5 +25,27 @@ jobs:
           hugo-version: latest
           extended: true
 
-      - name: Build site
+      - name: Build site including editorial drafts
         run: hugo --buildDrafts --minify
+
+      - name: Verify essential pages and feeds
+        run: |
+          set -eu
+          test -s public/index.html
+          test -s public/articles/index.html
+          test -s public/categories/index.html
+          test -s public/categories/culture/index.html
+          test -s public/categories/talents/index.html
+          test -s public/categories/digital/index.html
+          test -s public/categories/societe/index.html
+          test -s public/categories/creativite/index.html
+          test -s public/categories/vibrance/index.html
+          test -s public/recherche/index.html
+          test -s public/404.html
+          test -s public/index.json
+          test -s public/index.xml
+          test -s public/sitemap.xml
+          test -s public/robots.txt
+          python -m json.tool public/index.json > /dev/null
+          grep -q "Bienvenue dans l'univers de Wo" public/categories/culture/index.html
+          grep -q "Bienvenue dans l'univers de Wo" public/articles/index.html
