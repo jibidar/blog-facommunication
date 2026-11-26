@@ -17,30 +17,70 @@ Blog éditorial francophone de FA Communication, construit avec Hugo, hébergé 
 - **GitHub Actions** vérifie chaque modification et prépare le déploiement.
 - **GitHub Pages** héberge le site sans frais sur un dépôt public.
 
+## Prévisualiser le blog sur son ordinateur
+
+La prévisualisation locale permet de parcourir le site dans Chrome sans le publier sur Internet. Elle ne modifie ni le site principal ni le DNS.
+
+### 1. Préparer les outils
+
+Il faut installer :
+- **Git**, pour récupérer le dépôt ;
+- **Hugo Extended**, version étendue, pour générer le site et ses styles.
+
+Après installation, ouvrir PowerShell et vérifier que les commandes répondent :
+
+```powershell
+git --version
+hugo version
+```
+
+La version de Hugo doit indiquer qu'il s'agit de la version **extended**.
+
+### 2. Récupérer la branche de préparation
+
+Dans PowerShell, exécuter les commandes suivantes :
+
+```powershell
+git clone --branch setup/initial-hugo-foundation https://github.com/jibidar/blog-facommunication.git
+cd blog-facommunication
+```
+
+Si le dossier du projet existe déjà sur l'ordinateur, il n'est pas nécessaire de le cloner une deuxième fois : ouvrir PowerShell dans ce dossier et vérifier que la branche active est `setup/initial-hugo-foundation`.
+
+### 3. Démarrer l'aperçu local
+
+```powershell
+hugo server -D --baseURL http://localhost:1313/
+```
+
+Puis ouvrir cette adresse dans le navigateur :
+
+**http://localhost:1313/**
+
+Garder PowerShell ouvert pendant la consultation. Pour arrêter le serveur, revenir dans cette fenêtre et appuyer sur **Ctrl + C**.
+
+> **Important :** l'option `-D` affiche aussi les contenus encore en brouillon, notamment l'article de test et les pages juridiques en préparation. Cet aperçu est privé à l'échelle de l'ordinateur : il ne constitue pas une publication en ligne. Ne pas désactiver le statut Brouillon d'un contenu uniquement pour le voir dans cet aperçu.
+
+En cas de message indiquant que `hugo` n'est pas reconnu, Hugo Extended n'est probablement pas installé ou son chemin n'est pas encore ajouté au PATH de Windows.
+
 ## Rédaction
 
 Dans Pages CMS, ouvrir la collection **Articles** :
 1. Créer un article avec un titre, une date et un résumé.
 2. Laisser **Brouillon** activé tant que le texte n'est pas prêt.
-3. Choisir une rubrique et saisir les mots-clés séparément (une entrée par mot-clé).
+3. Choisir une ou plusieurs rubriques et saisir les mots-clés séparément (une entrée par mot-clé).
 4. Ajouter une image de couverture horizontale de bonne qualité.
 5. Relire l'aperçu, puis désactiver Brouillon uniquement lorsque l'article est prêt à paraître.
 
 Les pages **À propos**, **Contact**, **Mentions légales**, **Confidentialité** et les six rubriques sont également exposées dans Pages CMS, dans le groupe **Pages du blog**. Les deux pages juridiques restent des brouillons : leur statut de brouillon est conservé et elles ne doivent pas être publiées avant validation.
 
-Les rubriques existantes peuvent être modifiées depuis le groupe **Pages du blog → Rubriques**. Pour ajouter une nouvelle rubrique, il faut encore créer un dossier avec `_index.md`, définir son titre, sa description et son poids d'affichage, puis ajouter son nom dans les catégories des articles concernés et dans la configuration CMS.
+Les rubriques existantes peuvent être modifiées depuis le groupe **Pages du blog → Rubriques**. Pour ajouter une nouvelle rubrique, il faut encore créer un dossier avec `_index.md`, définir son titre, sa description et son poids d'affichage, puis ajouter son nom dans les catégories proposées dans la configuration CMS.
 
-## Développement local
+## Génération du site
 
-Installer Hugo Extended, puis lancer :
+Pour vérifier ou générer le site sans lancer le serveur local :
 
-```sh
-hugo server -D
-```
-
-Pour produire le site :
-
-```sh
+```powershell
 hugo --minify
 ```
 
@@ -52,6 +92,7 @@ Avant la première publication :
 - vérifier le rendu sur ordinateur et mobile ;
 - ajouter la mascotte originale ;
 - compléter et faire vérifier les mentions légales et la politique de confidentialité ;
+- finaliser les coordonnées de contact de la rédaction ;
 - vérifier les paramètres GitHub Pages et l'absence de conflit avec un déploiement existant ;
 - préparer le domaine personnalisé uniquement après accord explicite et vérification DNS.
 
