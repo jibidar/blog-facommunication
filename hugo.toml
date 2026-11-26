@@ -7,7 +7,6 @@ summaryLength = 32
 [pagination]
   pagerSize = 9
 [taxonomies]
-  category = "categories"
   tag = "tags"
 [outputs]
   home = ["HTML", "RSS", "JSON"]
