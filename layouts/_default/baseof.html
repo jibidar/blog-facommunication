@@ -12,7 +12,7 @@
   <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
   <meta property="og:description" content="{{ .Description | default site.Params.description | plainify | htmlEscape }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  {{ with .Params.cover }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+  {{ with .Params.cover }}<meta property="og:image" content="{{ . | absURL }}"><meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
   <meta name="twitter:card" content="{{ if .Params.cover }}summary_large_image{{ else }}summary{{ end }}">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
   <link rel="alternate" type="application/rss+xml" title="{{ site.Title }} — Flux RSS" href="{{ "/index.xml" | relURL }}">
@@ -46,7 +46,7 @@
       <div class="footer-links">
         <p>Un média de <a href="https://facommunication.tg/" target="_blank" rel="noopener noreferrer">FA Communication</a>.</p>
         <p><a href="{{ "/a-propos/" | relURL }}">À propos</a> · <a href="{{ "/contact/" | relURL }}">Contact</a></p>
-        <p><a href="{{ "/mentions-legales/" | relURL }}">Mentions légales</a> · <a href="{{ "/confidentialite/" | relURL }}">Confidentialité</a> · <a href="{{ "/index.xml" | relURL }}">Flux RSS</a></p>
+        <p>{{ with site.GetPage "/mentions-legales" }}{{ if not .Draft }}<a href="{{ .RelPermalink }}">Mentions légales</a> · {{ end }}{{ end }}{{ with site.GetPage "/confidentialite" }}{{ if not .Draft }}<a href="{{ .RelPermalink }}">Confidentialité</a> · {{ end }}{{ end }}<a href="{{ "/index.xml" | relURL }}">Flux RSS</a></p>
       </div>
     </div>
   </footer>
