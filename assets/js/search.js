@@ -7,7 +7,7 @@
   let articles = [];
   let ready = false;
 
-  fetch("/index.json")
+  fetch(input.dataset.indexUrl || "/index.json")
     .then((response) => {
       if (!response.ok) throw new Error("Index unavailable");
       return response.json();
