@@ -3,17 +3,17 @@
   const results = document.getElementById("search-results");
   const status = document.getElementById("search-status");
   if (!input || !results || !status) return;
-  let articles = [];
+  let articles = [];\n  let ready = false;
   fetch("/index.json").then((response) => {
     if (!response.ok) throw new Error("Index unavailable");
     return response.json();
-  }).then((data) => { articles = data; })
+  }).then((data) => { articles = data; ready = true; if (input.value.trim().length >= 2) input.dispatchEvent(new Event("input")); })
     .catch(() => { status.textContent = "La recherche est momentanément indisponible. Réessayez plus tard."; });
   input.addEventListener("input", () => {
     const query = input.value.trim().toLocaleLowerCase("fr");
     results.replaceChildren();
-    if (query.length < 2) { status.textContent = "Saisissez au moins deux caractères."; return; }
-    const matches = articles.filter((article) => [article.title, article.description, ...(article.categories || [])].join(" ").toLocaleLowerCase("fr").includes(query)).slice(0, 20);
+    if (query.length < 2) { status.textContent = "Saisissez au moins deux caractères."; return; }\n    if (!ready) { status.textContent = "Chargement de la recherche…"; return; }
+    const matches = articles.filter((article) => [article.title, article.description, article.content, ...(article.categories || [])].join(" ").toLocaleLowerCase("fr").includes(query)).slice(0, 20);
     status.textContent = matches.length ? matches.length + " résultat(s) trouvé(s)." : "Aucun article ne correspond à cette recherche.";
     matches.forEach((article) => {
       const card = document.createElement("article"); card.className = "article-card search-result";
