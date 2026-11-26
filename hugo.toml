@@ -1,5 +1,5 @@
 baseURL = "https://blog.facommunication.tg/"
-languageCode = "fr-fr"
+locale = "fr-FR"
 defaultContentLanguage = "fr"
 title = "Wo — Le blog de FA Communication"
 enableRobotsTXT = true
