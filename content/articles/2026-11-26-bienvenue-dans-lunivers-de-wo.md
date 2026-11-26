@@ -7,7 +7,9 @@ description: Wo, le blog de FA Communication, ouvre une fenêtre sur les idées,
 categories:
   - Culture
 tags:
-  - Wo, FA Communication, Afrique
+  - Wo
+  - FA Communication
+  - Afrique
 author: FA Communication
 ---
 Bienvenue sur Wo, le blog de FA Communication.
