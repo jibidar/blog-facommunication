@@ -25,6 +25,9 @@ jobs:
           hugo-version: latest
           extended: true
 
+      - name: Check search script syntax
+        run: node --check assets/js/search.js
+
       - name: Build site including editorial drafts
         run: hugo --buildDrafts --minify
 
