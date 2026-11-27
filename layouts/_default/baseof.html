@@ -32,15 +32,27 @@
         <img class="brand-mascot" src="{{ site.Params.mascot | relURL }}" alt="" onerror="this.hidden=true">
         <span class="brand-copy"><strong>Wo</strong><small>Le blog de FA Communication</small></span>
       </a>
-      <details class="site-navigation">
-        <summary class="nav-toggle"><span>Menu</span><span class="nav-toggle-icon" aria-hidden="true">☰</span></summary>
-        <div class="nav-panel">
-          <nav class="main-nav" aria-label="Navigation principale">
-            {{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+      <nav class="desktop-nav" aria-label="Navigation principale">
+        <a href="{{ "/articles/" | relURL }}"{{ if or (eq .RelPermalink ("/articles/" | relURL)) (eq .Section "articles") }} aria-current="page"{{ end }}>Articles</a>
+        {{ with site.GetPage "/categories" }}
+          {{ range .Pages.ByWeight }}
+            <a href="{{ .RelPermalink }}"{{ if or (eq $.RelPermalink .RelPermalink) (eq $.Params.parentCategory .Title) }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a>
+          {{ end }}
+        {{ end }}
+        <a class="nav-search" href="{{ "/recherche/" | relURL }}"{{ if eq .RelPermalink ("/recherche/" | relURL) }} aria-current="page"{{ end }}>Recherche <span aria-hidden="true">⌕</span></a>
+      </nav>
+      <details class="mobile-navigation">
+        <summary class="mobile-nav-toggle"><span>Menu</span><span class="mobile-nav-icon" aria-hidden="true">☰</span></summary>
+        <div class="mobile-nav-panel">
+          <nav class="mobile-nav" aria-label="Navigation principale">
+            <a href="{{ "/articles/" | relURL }}"{{ if or (eq .RelPermalink ("/articles/" | relURL)) (eq .Section "articles") }} aria-current="page"{{ end }}>Articles</a>
             {{ with site.GetPage "/categories" }}
-              {{ range .Pages.ByWeight }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+              {{ range .Pages.ByWeight }}
+                <a href="{{ .RelPermalink }}"{{ if or (eq $.RelPermalink .RelPermalink) (eq $.Params.parentCategory .Title) }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a>
+              {{ end }}
             {{ end }}
-            <a href="{{ "/recherche/" | relURL }}">Recherche</a>
+            <a href="{{ "/recherche/" | relURL }}"{{ if eq .RelPermalink ("/recherche/" | relURL) }} aria-current="page"{{ end }}>Recherche</a>
+            <div class="mobile-nav-secondary"><a href="{{ "/a-propos/" | relURL }}">À propos</a><a href="{{ "/contact/" | relURL }}">Contact</a></div>
           </nav>
         </div>
       </details>
