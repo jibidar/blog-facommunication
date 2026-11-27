@@ -37,17 +37,13 @@
         {{ with site.GetPage "/categories" }}
           {{ range .Pages.ByWeight }}
             {{ $category := . }}
-            {{ if $category.Pages }}
-              <details class="nav-dropdown">
-                <summary>{{ $category.LinkTitle }} <span aria-hidden="true">⌄</span></summary>
-                <div class="nav-dropdown-menu">
-                  <a href="{{ $category.RelPermalink }}">Toute la rubrique</a>
-                  {{ range $category.Pages.ByWeight }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
-                </div>
-              </details>
-            {{ else }}
-              <a href="{{ $category.RelPermalink }}">{{ $category.LinkTitle }}</a>
-            {{ end }}
+            <details class="nav-dropdown">
+              <summary>{{ $category.LinkTitle }} <span aria-hidden="true">⌄</span></summary>
+              <div class="nav-dropdown-menu">
+                <a href="{{ $category.RelPermalink }}">Toute la rubrique</a>
+                {{ range $category.Pages.ByWeight }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+              </div>
+            </details>
           {{ end }}
         {{ end }}
         <a href="{{ "/recherche/" | relURL }}">Recherche</a>
