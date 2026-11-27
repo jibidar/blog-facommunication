@@ -7,10 +7,25 @@ description: "Une idée d'article, un talent à faire découvrir ou une proposit
 
 Vous souhaitez proposer un sujet, signaler une initiative, faire découvrir un talent ou échanger autour d'une collaboration éditoriale ?
 
-Wo est à l'écoute des idées et des histoires qui méritent d'être racontées.
+La rédaction de Wo est à l'écoute des idées et des histoires qui méritent d'être racontées.
 
 ## Écrire à la rédaction
 
-Pour le moment, vous pouvez retrouver FA Communication sur son [site officiel](https://facommunication.tg/).
+Pour toute proposition éditoriale, question ou demande de collaboration, vous pouvez nous écrire à :
 
-*Avant l'ouverture publique du blog, cette page sera complétée avec les coordonnées directes de la rédaction et, si nécessaire, un formulaire de contact.*
+**[contact@facommunication.tg](mailto:contact@facommunication.tg)**
+
+## Suivre Wo
+
+Retrouvez également le blog sur ses réseaux sociaux :
+
+- [Facebook](https://www.facebook.com/blog.facommunication)
+- [Instagram](https://www.instagram.com/blog.facommunication)
+
+## Adresse
+
+FA Communication  
+Avenou, Ave Maria  
+Togo
+
+*Pour toute correspondance nécessitant une adresse postale complète, merci de nous contacter préalablement par e-mail.*
