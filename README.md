@@ -1,11 +1,11 @@
-# Wo — Le blog de FA Communication
+# Wo — Le blog de FA COMMUNICATION
 
-Blog éditorial francophone de FA Communication, construit avec Hugo, hébergé gratuitement sur GitHub Pages et administré avec Pages CMS.
+Blog éditorial francophone de FA COMMUNICATION, construit avec Hugo, hébergé gratuitement sur GitHub Pages et administré avec Pages CMS.
 
 ## Identité éditoriale
 
 - Nom : **Wo**
-- Signature : **Le blog de FA Communication**
+- Signature : **Le blog de FA COMMUNICATION**
 - Accroche : **La curiosité de rester en éveil.**
 - Positionnement : **Regards sur une Afrique et un monde qui créent, innovent et rayonnent.**
 - Rubriques : Culture, Talents, Digital, Société, Créativité et Vibrance.
@@ -60,7 +60,7 @@ Puis ouvrir cette adresse dans le navigateur :
 
 Garder PowerShell ouvert pendant la consultation. Pour arrêter le serveur, revenir dans cette fenêtre et appuyer sur **Ctrl + C**.
 
-> **Important :** l'option `-D` affiche aussi les contenus encore en brouillon, notamment l'article de test et les pages juridiques en préparation. Cet aperçu est privé à l'échelle de l'ordinateur : il ne constitue pas une publication en ligne. Ne pas désactiver le statut Brouillon d'un contenu uniquement pour le voir dans cet aperçu.
+> **Important :** l'option `-D` affiche aussi les contenus encore en brouillon, notamment l'article de lancement. Les mentions légales et la politique de confidentialité sont, elles, intégrées au site généré. Cet aperçu est privé à l'échelle de l'ordinateur : il ne constitue pas une publication en ligne. Ne pas désactiver le statut Brouillon d'un contenu uniquement pour le voir dans cet aperçu.
 
 En cas de message indiquant que `hugo` n'est pas reconnu, Hugo Extended n'est probablement pas installé ou son chemin n'est pas encore ajouté au PATH de Windows.
 
@@ -73,7 +73,7 @@ Dans Pages CMS, ouvrir la collection **Articles** :
 4. Ajouter une image de couverture horizontale de bonne qualité.
 5. Relire l'aperçu, puis désactiver Brouillon uniquement lorsque l'article est prêt à paraître.
 
-Les pages **À propos**, **Contact**, **Mentions légales**, **Confidentialité** et les six rubriques sont également exposées dans Pages CMS, dans le groupe **Pages du blog**. Les deux pages juridiques restent des brouillons : leur statut de brouillon est conservé et elles ne doivent pas être publiées avant validation.
+Les pages **À propos**, **Contact**, **Mentions légales**, **Confidentialité** et les six rubriques sont également exposées dans Pages CMS, dans le groupe **Pages du blog**. Les deux pages juridiques sont publiées dans le site généré et restent modifiables depuis Pages CMS.
 
 Les rubriques principales peuvent être modifiées depuis **Pages du blog → Rubriques**. Les sous-rubriques sont gérées dans la collection **Sous-rubriques** : elles apparaissent automatiquement sur la page de leur rubrique. Le menu principal reste volontairement réservé aux six rubriques, aux articles et à la recherche afin de rester clair sur ordinateur comme sur mobile. Pour en créer une, choisir la rubrique principale, saisir un titre, une description et un ordre d'affichage. Les sous-rubriques sont volontairement évolutives : il est possible d'en ajouter, d'en renommer ou d'en réorganiser sans modifier les six rubriques principales.
 
