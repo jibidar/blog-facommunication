@@ -6,7 +6,7 @@
   </div>
 </section>
 <section class="section container" aria-labelledby="rubriques-title"><div class="section-heading"><div><p class="eyebrow">EXPLORER</p><h2 id="rubriques-title">Nos rubriques</h2></div><p>Six portes ouvertes sur les cultures, les idées et les talents d'Afrique et du monde.</p></div><div class="category-grid">
-{{ with site.GetPage "/categories" }}{{ range .Pages.ByWeight }}<a class="category-card" href="{{ .RelPermalink }}"><span class="category-icon" aria-hidden="true">✳</span><strong>{{ .LinkTitle }}</strong><small>{{ .Description }}</small></a>{{ end }}{{ end }}
+{{ with site.GetPage "/categories" }}{{ range .Pages.ByWeight }}<a class="category-card" href="{{ .RelPermalink }}"><span class="category-icon" aria-hidden="true">{{ if eq .Title "Culture" }}♫{{ else if eq .Title "Talents" }}✦{{ else if eq .Title "Digital" }}⌘{{ else if eq .Title "Société" }}◎{{ else if eq .Title "Créativité" }}✳{{ else }}✺{{ end }}</span><strong>{{ .LinkTitle }}</strong><small>{{ .Description }}</small></a>{{ end }}{{ end }}
 </div></section>
 <section class="section featured-section" id="a-la-une"><div class="container"><div class="section-heading"><div><p class="eyebrow">À LIRE ET À DÉCOUVRIR</p><h2>À la une</h2></div><p>Des histoires, des idées et des rencontres à découvrir.</p></div><div class="article-grid">
 {{ $articles := where site.RegularPages "Section" "eq" "articles" }}{{ range first 3 ($articles.ByDate.Reverse) }}{{ $article := . }}
