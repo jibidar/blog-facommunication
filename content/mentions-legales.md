@@ -7,7 +7,7 @@ description: "Informations relatives à l'éditeur du blog Wo."
 
 ## Éditeur
 
-Le blog **Wo** est édité par **FA Communication**, société à responsabilité limitée unipersonnelle (SARL U).
+Le blog **Wo** est édité par **FA COMMUNICATION**, société à responsabilité limitée unipersonnelle (SARL U).
 
 - **Siège social :** Avenou, Ave Maria, Togo
 - **Adresse électronique :** [contact@facommunication.tg](mailto:contact@facommunication.tg)
