@@ -6,9 +6,10 @@ Blog éditorial francophone de FA Communication, construit avec Hugo, hébergé 
 
 - Nom : **Wo**
 - Signature : **Le blog de FA Communication**
-- Accroche : **La curiosité ouvre le monde.**
+- Accroche : **La curiosité de rester en éveil.**
+- Positionnement : **Regards sur une Afrique et un monde qui créent, innovent et rayonnent.**
 - Rubriques : Culture, Talents, Digital, Société, Créativité et Vibrance.
-- Mascotte : ajouter le fichier original à `static/images/wo/wo.png` (ne pas remplacer par une autre illustration).
+- Mascotte : fichier original intégré à `static/images/wo/wo.png` (ne pas remplacer par une autre illustration).
 
 ## Architecture
 
@@ -92,7 +93,7 @@ Le workflow `.github/workflows/deploy.yml` est volontairement déclenchable **ma
 
 Avant la première publication :
 - vérifier le rendu sur ordinateur et mobile ;
-- ajouter la mascotte originale ;
+- tester Pages CMS avec un brouillon réel (article, image, rubrique et sous-rubrique) ;
 - compléter et faire vérifier les mentions légales et la politique de confidentialité ;
 - finaliser les coordonnées de contact de la rédaction ;
 - vérifier les paramètres GitHub Pages et l'absence de conflit avec un déploiement existant ;
