@@ -1,8 +1,8 @@
 ---
 title: "Digital"
-description: "Technologies, intelligence artificielle, innovation et transformations numériques."
+description: "Intelligence artificielle, technologies et nouveaux usages numériques."
 weight: 3
 ---
-Le numérique change notre manière d'apprendre, de travailler, de créer et de communiquer. Wo décrypte ces évolutions avec curiosité, en privilégiant les usages concrets et les innovations qui comptent.
+Le numérique transforme notre manière d'apprendre, de travailler, de créer et d'échanger. Wo suit ces évolutions avec curiosité et esprit critique : comprendre les outils, éclairer leurs usages et raconter les innovations qui changent concrètement la vie.
 
-**Au programme :** intelligence artificielle, outils numériques, entrepreneuriat tech, cybersécurité, usages et innovation.
+**À explorer :** intelligence artificielle, innovation technologique, culture numérique et usages du quotidien.
