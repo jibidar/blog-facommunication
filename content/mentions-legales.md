@@ -13,10 +13,12 @@ Le blog **Wo** est édité par :
 
 - **Dénomination communiquée :** FA Communication
 - **Forme juridique communiquée :** Société à responsabilité limitée unipersonnelle (SARL U)
-- **Adresse communiquée :** Avenou, Ave Maria, Togo
+- **Siège social déclaré :** Avenou, Ave Maria, Togo
 - **Adresse électronique :** [contact@facommunication.tg](mailto:contact@facommunication.tg)
 
-**Information à confirmer :** dénomination sociale exacte telle qu'enregistrée, adresse complète du siège social et numéro RCCM (ou autre identifiant légal applicable).
+L'adresse d'Avenou, Ave Maria est celle qui figure sur les documents officiels de la SARL U.
+
+**Information à confirmer :** dénomination sociale exacte telle qu'enregistrée et numéro RCCM (ou autre identifiant légal applicable).
 
 ## Directeur de la publication
 
@@ -46,7 +48,6 @@ Pour toute question relative au blog ou aux présentes mentions :
 
 **Éléments restant à vérifier avant publication :**
 - dénomination sociale exacte et justificatif de la forme juridique ;
-- adresse complète du siège social ;
 - numéro RCCM et autres identifiants obligatoires, le cas échéant ;
 - confirmation de la désignation du directeur de publication ;
 - coordonnées officielles de l'hébergeur ;
