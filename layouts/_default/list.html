@@ -5,7 +5,22 @@
   {{ $pages := .Pages }}
   {{ if eq .Section "categories" }}
     {{ $allArticles := where site.RegularPages "Section" "eq" "articles" }}
-    {{ $pages = where $allArticles "Params.categories" "intersect" (slice .Title) }}
+    {{ $categoryName := .Title }}
+    {{ if .Params.parentCategory }}{{ $categoryName = .Params.parentCategory }}{{ end }}
+    {{ $pages = where $allArticles "Params.categories" "intersect" (slice $categoryName) }}
+    {{ if .Params.parentCategory }}
+      {{ $pages = where $pages "Params.subcategory" "eq" .Title }}
+    {{ end }}
+  {{ end }}
+  {{ if and (eq .Section "categories") (not .Params.parentCategory) .Pages }}
+  <section class="subcategory-section" aria-label="Sous-rubriques de {{ .Title }}">
+    <h2>Explorer {{ .Title }}</h2>
+    <div class="subcategory-grid">
+      {{ range .Pages.ByWeight }}
+      <a class="subcategory-card" href="{{ .RelPermalink }}"><strong>{{ .LinkTitle }}</strong>{{ with .Description }}<span>{{ . }}</span>{{ end }}<small>Explorer →</small></a>
+      {{ end }}
+    </div>
+  </section>
   {{ end }}
   {{ $paginator := .Paginate $pages }}
   <div class="article-grid">
