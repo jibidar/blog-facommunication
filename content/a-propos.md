@@ -1,11 +1,11 @@
 ---
 title: "À propos de Wo"
-description: "Wo, le blog de FA Communication : des regards sur une Afrique et un monde qui créent, innovent et rayonnent."
+description: "Wo, le blog de FA COMMUNICATION : des regards sur une Afrique et un monde qui créent, innovent et rayonnent."
 ---
 
 # La curiosité de rester en éveil.
 
-**Wo est le blog éditorial de FA Communication.** Un espace de découverte et de réflexion consacré aux cultures, aux idées, aux talents et aux initiatives qui racontent notre époque.
+**Wo est le blog éditorial de FA COMMUNICATION.** Un espace de découverte et de réflexion consacré aux cultures, aux idées, aux talents et aux initiatives qui racontent notre époque.
 
 Notre regard s'ancre en Afrique et s'ouvre au monde. Nous nous intéressons à celles et ceux qui créent, imaginent, transmettent, entreprennent et transforment leur environnement. Nous voulons raconter leurs histoires, faire connaître leurs idées et explorer les mouvements qui façonnent nos sociétés.
 
@@ -30,6 +30,6 @@ Ces rubriques sont autant de chemins pour explorer, croiser les regards et faire
 
 Raconter avec attention. Explorer avec curiosité. Accorder de la place aux idées et aux personnes qui méritent d'être découvertes.
 
-Wo est un média de **FA Communication**.
+Wo est un média de **FA COMMUNICATION**.
 
 **Regards sur une Afrique et un monde qui créent, innovent et rayonnent.**
