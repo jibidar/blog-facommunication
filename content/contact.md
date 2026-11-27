@@ -22,10 +22,8 @@ Retrouvez également le blog sur ses réseaux sociaux :
 - [Facebook](https://www.facebook.com/blog.facommunication)
 - [Instagram](https://www.instagram.com/blog.facommunication)
 
-## Adresse
+## Adresse déclarée
 
-FA Communication  
+**FA Communication — siège social**  
 Avenou, Ave Maria  
 Togo
-
-*Pour toute correspondance nécessitant une adresse postale complète, merci de nous contacter préalablement par e-mail.*
