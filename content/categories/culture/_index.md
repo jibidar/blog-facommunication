@@ -1,8 +1,8 @@
 ---
 title: "Culture"
-description: "Arts, musique, littérature, cinéma et expressions culturelles."
+description: "Musiques, scènes, cinéma, livres et patrimoines vivants."
 weight: 1
 ---
-La culture raconte qui nous sommes, ce qui nous relie et ce qui nous transforme. Wo explore les scènes artistiques, les patrimoines vivants, les nouvelles expressions et les voix qui renouvellent les imaginaires africains.
+La culture raconte nos histoires, nourrit nos imaginaires et crée des liens entre les générations. Wo explore les expressions artistiques d'Afrique et d'ailleurs, les patrimoines qui se transmettent et les voix qui inventent de nouveaux langages.
 
-**Au programme :** musique, cinéma, littérature, arts visuels, scène, patrimoine et rencontres culturelles.
+**À explorer :** musique et scène, cinéma et audiovisuel, livres, arts visuels, patrimoine et rencontres culturelles.
