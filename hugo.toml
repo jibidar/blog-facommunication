@@ -1,7 +1,7 @@
 baseURL = "https://blog.facommunication.tg/"
 locale = "fr-FR"
 defaultContentLanguage = "fr"
-title = "Wo — Le blog de FA Communication"
+title = "Wo — Le blog de FA COMMUNICATION"
 enableRobotsTXT = true
 summaryLength = 32
 [pagination]
@@ -15,8 +15,8 @@ summaryLength = 32
   tagline = "La curiosité de rester en éveil."
   mascot = "/images/wo/wo.png"
   brandName = "Wo"
-  brandSubtitle = "Le blog de FA Communication"
-  defaultAuthor = "FA Communication"
+  brandSubtitle = "Le blog de FA COMMUNICATION"
+  defaultAuthor = "FA COMMUNICATION"
 [menus]
   [[menus.main]]
     name = "Accueil"
