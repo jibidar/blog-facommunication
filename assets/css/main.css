@@ -52,3 +52,7 @@
 .subcategory-card small{margin-top:5px;color:var(--red);font-weight:800}
 @media(max-width:850px){.nav-dropdown summary{font-size:.84rem}.nav-dropdown-menu{left:auto;right:0}.subcategory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.nav-dropdown summary{font-size:.78rem}.nav-dropdown-menu{position:fixed;top:auto;left:15px;right:15px;min-width:0;margin-top:12px}.subcategory-section{padding:16px}.subcategory-grid{grid-template-columns:1fr}}
+
+/* Accessibilité : focus visible et respect des préférences de mouvement. */
+.nav-dropdown summary:focus-visible{outline:3px solid var(--yellow);outline-offset:4px;border-radius:5px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
