@@ -52,6 +52,10 @@ content:
             - Société
             - Créativité
             - Vibrance
+      - name: subcategory
+        label: Sous-rubrique
+        type: string
+        description: "Facultatif. Saisir exactement le nom d'une sous-rubrique existante dans la rubrique choisie. Ce champ reste libre pour permettre à l'organisation éditoriale d'évoluer."
       - name: tags
         label: Mots-clés
         type: string
