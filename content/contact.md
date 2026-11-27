@@ -24,6 +24,6 @@ Retrouvez également le blog sur ses réseaux sociaux :
 
 ## Adresse déclarée
 
-**FA Communication — siège social**  
+**FA COMMUNICATION — siège social**  
 Avenou, Ave Maria  
 Togo
