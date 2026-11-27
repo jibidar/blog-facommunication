@@ -164,11 +164,6 @@ content:
             label: Titre
             type: string
             required: true
-          - name: draft
-            label: Conserver en brouillon
-            type: boolean
-            default: true
-            description: "Laisser activé jusqu'à la vérification complète de cette page."
           - name: body
             label: Contenu
             type: rich-text
