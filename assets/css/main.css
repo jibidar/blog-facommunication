@@ -18,30 +18,7 @@
 @media(max-width:560px){.prose-page{padding-block:45px 65px}}
 
 
-/* Navigation mobile : conserver tous les accès sans comprimer les libellés. */
-@media(max-width:560px){
-  .main-nav{
-    width:100%;
-    max-width:100%;
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    overflow-y:hidden;
-    padding:3px 2px 9px;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:thin;
-  }
-  .main-nav a{flex:0 0 auto;white-space:nowrap}
-}
 
-
-/* Navigation déroulante : légère, accessible au clavier et utilisable au toucher. */
-.nav-dropdown{position:relative;flex:0 0 auto}
-.nav-dropdown summary{list-style:none;cursor:pointer;font-size:.86rem;font-weight:700;white-space:nowrap;transition:color .2s}
-.nav-dropdown summary::-webkit-details-marker{display:none}
-.nav-dropdown summary:hover,.nav-dropdown[open] summary{color:var(--red)}
-.nav-dropdown-menu{position:absolute;top:calc(100% + 12px);left:0;z-index:10;min-width:210px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 38px rgba(35,25,20,.13);display:grid;gap:2px}
-.nav-dropdown-menu a{display:block;padding:9px 12px;border-radius:8px;font-size:.82rem;font-weight:600;white-space:nowrap}
-.nav-dropdown-menu a:hover,.nav-dropdown-menu a:focus-visible{background:#fff0f0;color:var(--red)}
 .subcategory-section{margin:0 0 36px;padding:22px;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius)}
 .subcategory-section h2{margin:0 0 15px;font:800 1.15rem Manrope,sans-serif}
 .subcategory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
@@ -50,9 +27,34 @@
 .subcategory-card strong{font:800 .95rem Manrope,sans-serif}
 .subcategory-card span{color:var(--muted);font-size:.8rem;line-height:1.45}
 .subcategory-card small{margin-top:5px;color:var(--red);font-weight:800}
-@media(max-width:850px){.nav-dropdown summary{font-size:.84rem}.nav-dropdown-menu{left:auto;right:0}.subcategory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.nav-dropdown summary{font-size:.78rem}.nav-dropdown-menu{position:fixed;top:auto;left:15px;right:15px;min-width:0;margin-top:12px}.subcategory-section{padding:16px}.subcategory-grid{grid-template-columns:1fr}}
+.subcategory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.subcategory-section{padding:16px}.subcategory-grid{grid-template-columns:1fr}}
 
-/* Accessibilité : focus visible et respect des préférences de mouvement. */
-.nav-dropdown summary:focus-visible{outline:3px solid var(--yellow);outline-offset:4px;border-radius:5px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Navigation simplifiée : rubriques principales dans le menu, sous-rubriques dans leurs pages. */
+.site-navigation{position:relative;flex:0 0 auto}
+.nav-toggle{display:none;list-style:none}
+.nav-toggle::-webkit-details-marker{display:none}
+.nav-panel{display:block}
+.main-nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,1.8vw,25px);flex-wrap:wrap}
+.main-nav a{white-space:nowrap}
+@media(max-width:850px){
+  .header-inner{align-items:center;flex-direction:row;padding-block:13px;gap:18px}
+  .site-navigation{margin-left:auto}
+  .nav-toggle{display:flex;align-items:center;gap:12px;cursor:pointer;padding:10px 13px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:.86rem;font-weight:800}
+  .nav-toggle:hover,.site-navigation[open] .nav-toggle{border-color:#efb3b5;color:var(--red)}
+  .nav-toggle:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
+  .nav-toggle-icon{font-size:1.1rem;line-height:1}
+  .nav-panel{display:none;position:absolute;top:calc(100% + 12px);right:0;width:min(88vw,340px);padding:12px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 42px rgba(35,25,20,.15)}
+  .site-navigation[open] .nav-panel{display:block}
+  .main-nav{display:grid;grid-template-columns:1fr;gap:2px}
+  .main-nav a{display:block;padding:10px 12px;border-radius:9px;font-size:.9rem}
+  .main-nav a:hover,.main-nav a:focus-visible{background:#fff0f0}
+}
+@media(max-width:560px){
+  .header-inner{gap:10px}
+  .brand{min-width:0}
+  .brand-copy small{font-size:.64rem}
+  .brand-mascot{width:38px;height:46px}
+}
