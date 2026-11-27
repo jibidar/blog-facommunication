@@ -11,8 +11,8 @@ summaryLength = 32
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 [params]
-  description = "La curiosité ouvre le monde. Culture, talents, idées et innovations qui font bouger l'Afrique."
-  tagline = "La curiosité ouvre le monde."
+  description = "La curiosité de rester en éveil. Culture, talents, idées et innovations qui font bouger l'Afrique."
+  tagline = "La curiosité de rester en éveil."
   mascot = "/images/wo/wo.png"
   brandName = "Wo"
   brandSubtitle = "Le blog de FA Communication"
