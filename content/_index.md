@@ -1,4 +1,4 @@
 ---
 title: "Accueil"
-description: "La curiosité ouvre le monde."
+description: "La curiosité de rester en éveil."
 ---
