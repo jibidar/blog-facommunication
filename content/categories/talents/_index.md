@@ -1,8 +1,8 @@
 ---
 title: "Talents"
-description: "Portraits, parcours et initiatives de celles et ceux qui inspirent."
+description: "Portraits, parcours et initiatives de celles et ceux qui font bouger les lignes."
 weight: 2
 ---
-Derrière chaque réussite, il y a un parcours, des choix et une énergie singulière. Cette rubrique met en lumière les femmes et les hommes qui font avancer leurs domaines, souvent loin des projecteurs.
+Derrière chaque talent, il y a une histoire, des choix, des apprentissages et une énergie singulière. Wo part à la rencontre de celles et ceux qui font avancer leurs domaines, qu'ils soient déjà reconnus ou encore loin des projecteurs.
 
-**Au programme :** portraits, trajectoires, métiers, initiatives, savoir-faire et nouvelles générations.
+**À explorer :** portraits, parcours professionnels, métiers, savoir-faire et initiatives inspirantes.
