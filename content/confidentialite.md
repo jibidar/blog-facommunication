@@ -5,11 +5,11 @@ description: "Comment le blog Wo traite les informations liées à votre navigat
 
 # Politique de confidentialité
 
-FA Communication accorde de l'importance à la confidentialité des visiteurs du blog **Wo**. Cette page décrit les données susceptibles d'être traitées lors de la consultation du site ou d'un échange avec la rédaction.
+FA COMMUNICATION accorde de l'importance à la confidentialité des visiteurs du blog **Wo**. Cette page décrit les données susceptibles d'être traitées lors de la consultation du site ou d'un échange avec la rédaction.
 
 ## 1. Responsable
 
-Le responsable du traitement des données liées au blog est **FA Communication**.
+Le responsable du traitement des données liées au blog est **FA COMMUNICATION**.
 
 - **Siège social :** Avenou, Ave Maria, Togo
 - **Contact :** [contact@facommunication.tg](mailto:contact@facommunication.tg)
