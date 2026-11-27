@@ -74,7 +74,9 @@ Dans Pages CMS, ouvrir la collection **Articles** :
 
 Les pages **À propos**, **Contact**, **Mentions légales**, **Confidentialité** et les six rubriques sont également exposées dans Pages CMS, dans le groupe **Pages du blog**. Les deux pages juridiques restent des brouillons : leur statut de brouillon est conservé et elles ne doivent pas être publiées avant validation.
 
-Les rubriques existantes peuvent être modifiées depuis le groupe **Pages du blog → Rubriques**. Pour ajouter une nouvelle rubrique, il faut encore créer un dossier avec `_index.md`, définir son titre, sa description et son poids d'affichage, puis ajouter son nom dans les catégories proposées dans la configuration CMS.
+Les rubriques principales peuvent être modifiées depuis **Pages du blog → Rubriques**. Les sous-rubriques sont gérées dans la collection **Sous-rubriques** : elles apparaissent automatiquement dans le menu déroulant de leur rubrique et sur la page de cette rubrique. Pour en créer une, choisir la rubrique principale, saisir un titre, une description et un ordre d'affichage. Les sous-rubriques sont volontairement évolutives : il est possible d'en ajouter, d'en renommer ou d'en réorganiser sans modifier les six rubriques principales.
+
+Lors de la rédaction d'un article, choisir d'abord sa rubrique principale, puis, si cela est pertinent, sa sous-rubrique correspondante. Le champ Sous-rubrique reste facultatif. Éviter de créer une sous-rubrique pour chaque article : elles doivent regrouper de vrais sujets éditoriaux récurrents.
 
 ## Génération du site
 
