@@ -61,6 +61,6 @@ jobs:
           hugo --minify --destination public-production
           test -s public-production/index.html
           test -s public-production/recherche/index.html
-          test ! -e public-production/mentions-legales/index.html
-          test ! -e public-production/confidentialite/index.html
+          test -s public-production/mentions-legales/index.html
+          test -s public-production/confidentialite/index.html
           ! grep -q "Wo : la curiosité de rester en éveil" public-production/index.json
