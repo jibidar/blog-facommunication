@@ -28,9 +28,9 @@
   <a class="skip-link" href="#contenu">Aller au contenu</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="{{ "/" | relURL }}" aria-label="Wo, le blog de FA Communication — accueil">
+      <a class="brand" href="{{ "/" | relURL }}" aria-label="Wo, le blog de FA COMMUNICATION — accueil">
         <img class="brand-mascot" src="{{ site.Params.mascot | relURL }}" alt="" onerror="this.hidden=true">
-        <span class="brand-copy"><strong>Wo</strong><small>Le blog de FA Communication</small></span>
+        <span class="brand-copy"><strong>Wo</strong><small>Le blog de FA COMMUNICATION</small></span>
       </a>
       <nav class="desktop-nav" aria-label="Navigation principale">
         <a href="{{ "/articles/" | relURL }}"{{ if or (eq .RelPermalink ("/articles/" | relURL)) (eq .Section "articles") }} aria-current="page"{{ end }}>Articles</a>
@@ -61,9 +61,9 @@
   <main id="contenu">{{ block "main" . }}{{ end }}</main>
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div><strong>Wo</strong><p>Le blog de FA Communication</p><p class="footer-tagline">{{ site.Params.tagline }}</p></div>
+      <div><strong>Wo</strong><p>Le blog de FA COMMUNICATION</p><p class="footer-tagline">{{ site.Params.tagline }}</p></div>
       <div class="footer-links">
-        <p>Un média de <a href="https://facommunication.tg/" target="_blank" rel="noopener noreferrer">FA Communication</a>.</p>
+        <p>Un média de <a href="https://facommunication.tg/" target="_blank" rel="noopener noreferrer">FA COMMUNICATION</a>.</p>
         <p><a href="{{ "/a-propos/" | relURL }}">À propos</a> · <a href="{{ "/contact/" | relURL }}">Contact</a></p>
         <p>{{ with site.GetPage "/mentions-legales" }}{{ if not .Draft }}<a href="{{ .RelPermalink }}">Mentions légales</a> · {{ end }}{{ end }}{{ with site.GetPage "/confidentialite" }}{{ if not .Draft }}<a href="{{ .RelPermalink }}">Confidentialité</a> · {{ end }}{{ end }}<a href="{{ "/index.xml" | relURL }}">Flux RSS</a></p>
       </div>
