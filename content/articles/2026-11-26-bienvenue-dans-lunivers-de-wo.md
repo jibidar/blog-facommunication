@@ -2,21 +2,21 @@
 title: "Wo : la curiosité de rester en éveil"
 date: 2026-11-27
 draft: true
-description: "Wo, le blog de FA Communication, explore les idées, les cultures, les talents et les initiatives qui font évoluer l'Afrique et dialoguent avec le monde."
+description: "Wo, le blog de FA COMMUNICATION, explore les idées, les cultures, les talents et les initiatives qui font évoluer l'Afrique et dialoguent avec le monde."
 categories: []
 tags:
   - Wo
-  - FA Communication
+  - FA COMMUNICATION
   - Afrique
   - Curiosité
-author: FA Communication
+author: FA COMMUNICATION
 ---
 
 # Wo, une fenêtre ouverte sur l'Afrique et le monde
 
 Il y a des histoires qui méritent d'être racontées, des idées qui méritent d'être partagées et des talents qui ne demandent qu'à être découverts. Il y a aussi ces initiatives discrètes ou audacieuses qui, chacune à leur manière, contribuent à faire bouger les lignes. C'est pour leur donner toute leur place que Wo voit le jour.
 
-**Wo est le blog de FA Communication : un espace éditorial consacré à celles et ceux qui créent, imaginent, transmettent, entreprennent et transforment leur environnement.** Notre regard part de l'Afrique, de ses cultures, de ses énergies et de ses multiples visages. Il reste ouvert au monde, à ses mouvements, à ses idées et aux conversations qui nous rapprochent.
+**Wo est le blog de FA COMMUNICATION : un espace éditorial consacré à celles et ceux qui créent, imaginent, transmettent, entreprennent et transforment leur environnement.** Notre regard part de l'Afrique, de ses cultures, de ses énergies et de ses multiples visages. Il reste ouvert au monde, à ses mouvements, à ses idées et aux conversations qui nous rapprochent.
 
 ## Rester curieux, garder les yeux ouverts
 
