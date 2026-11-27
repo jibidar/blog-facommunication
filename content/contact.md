@@ -22,7 +22,7 @@ Retrouvez également le blog sur ses réseaux sociaux :
 - [Facebook](https://www.facebook.com/blog.facommunication)
 - [Instagram](https://www.instagram.com/blog.facommunication)
 
-## Adresse déclarée
+## Siège social
 
 **FA COMMUNICATION — siège social**  
 Avenou, Ave Maria  
