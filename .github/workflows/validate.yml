@@ -46,6 +46,11 @@ jobs:
           test -s public/categories/societe/index.html
           test -s public/categories/creativite/index.html
           test -s public/categories/vibrance/index.html
+          test "$(find public/categories -mindepth 3 -maxdepth 3 -name index.html | wc -l)" -eq 18
+          test -s public/images/wo/wo.png
+          test -s public/favicon.svg
+          test -s public/a-propos/index.html
+          test -s public/contact/index.html
           test -s public/recherche/index.html
           test -s public/404.html
           test -s public/index.json
