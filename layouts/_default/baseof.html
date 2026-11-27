@@ -32,22 +32,18 @@
         <img class="brand-mascot" src="{{ site.Params.mascot | relURL }}" alt="" onerror="this.hidden=true">
         <span class="brand-copy"><strong>Wo</strong><small>Le blog de FA Communication</small></span>
       </a>
-      <nav class="main-nav" aria-label="Navigation principale">
-        {{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
-        {{ with site.GetPage "/categories" }}
-          {{ range .Pages.ByWeight }}
-            {{ $category := . }}
-            <details class="nav-dropdown">
-              <summary>{{ $category.LinkTitle }} <span aria-hidden="true">⌄</span></summary>
-              <div class="nav-dropdown-menu">
-                <a href="{{ $category.RelPermalink }}">Toute la rubrique</a>
-                {{ range $category.Pages.ByWeight }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
-              </div>
-            </details>
-          {{ end }}
-        {{ end }}
-        <a href="{{ "/recherche/" | relURL }}">Recherche</a>
-      </nav>
+      <details class="site-navigation">
+        <summary class="nav-toggle"><span>Menu</span><span class="nav-toggle-icon" aria-hidden="true">☰</span></summary>
+        <div class="nav-panel">
+          <nav class="main-nav" aria-label="Navigation principale">
+            {{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+            {{ with site.GetPage "/categories" }}
+              {{ range .Pages.ByWeight }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+            {{ end }}
+            <a href="{{ "/recherche/" | relURL }}">Recherche</a>
+          </nav>
+        </div>
+      </details>
     </div>
   </header>
   <main id="contenu">{{ block "main" . }}{{ end }}</main>
