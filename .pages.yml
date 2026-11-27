@@ -54,8 +54,12 @@ content:
             - Vibrance
       - name: subcategory
         label: Sous-rubrique
-        type: string
-        description: "Facultatif. Saisir exactement le nom d'une sous-rubrique existante dans la rubrique choisie. Ce champ reste libre pour permettre à l'organisation éditoriale d'évoluer."
+        type: reference
+        description: "Facultatif. Choisir la sous-rubrique correspondant au sujet de l'article."
+        options:
+          collection: subcategories
+          value: "{primary}"
+          label: "{primary}"
       - name: tags
         label: Mots-clés
         type: string
@@ -337,6 +341,51 @@ content:
                   format: markdown
                   media: images
                   path: pages
+
+
+  - name: subcategories
+    label: Sous-rubriques
+    type: collection
+    path: content/categories
+    subfolders: true
+    exclude: ["_index.md"]
+    format: yaml-frontmatter
+    filename: "{parentCategory}/{slug}.md"
+    view:
+      fields: [title, parentCategory, weight]
+      primary: title
+      sort: [parentCategory, weight, title]
+      layout: tree
+    fields:
+      - name: title
+        label: Nom de la sous-rubrique
+        type: string
+        required: true
+      - name: parentCategory
+        label: Rubrique principale
+        type: select
+        required: true
+        options:
+          values:
+            - Culture
+            - Talents
+            - Digital
+            - Société
+            - Créativité
+            - Vibrance
+      - name: description
+        label: Description
+        type: text
+      - name: weight
+        label: Ordre d'affichage
+        type: number
+      - name: body
+        label: Présentation
+        type: rich-text
+        options:
+          format: markdown
+          media: images
+          path: pages
 
 settings:
   content:
