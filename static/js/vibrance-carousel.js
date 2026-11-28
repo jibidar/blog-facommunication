@@ -6,9 +6,11 @@
     const next = carousel.querySelector("[data-vibrance-next]");
     const dotsHost = carousel.querySelector("[data-vibrance-dots]");
     const counter = carousel.querySelector("[data-vibrance-counter]");
+    const progress = carousel.querySelector("[data-vibrance-progress]");
     if (!slides.length || !previous || !next || !dotsHost || !counter) return;
 
     let current = 0;
+    let pointerStart = null;
     const dots = slides.map((slide, index) => {
       const dot = document.createElement("button");
       dot.type = "button";
@@ -32,26 +34,27 @@
       });
       previous.disabled = current === 0;
       next.disabled = current === slides.length - 1;
-      counter.textContent = (current + 1) + " / " + slides.length;
+      counter.textContent = String(current + 1).padStart(2, "0") + " / " + String(slides.length).padStart(2, "0");
+      if (progress) progress.style.width = ((current + 1) / slides.length * 100) + "%";
     }
 
     previous.addEventListener("click", () => show(current - 1));
     next.addEventListener("click", () => show(current + 1));
-
-    let touchStartX = 0;
-    carousel.addEventListener("touchstart", (event) => {
-      if (event.changedTouches.length) touchStartX = event.changedTouches[0].clientX;
-    }, { passive: true });
-    carousel.addEventListener("touchend", (event) => {
-      if (!event.changedTouches.length || !touchStartX) return;
-      const delta = event.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(delta) > 55) show(current + (delta < 0 ? 1 : -1));
-      touchStartX = 0;
-    }, { passive: true });
-
+    carousel.addEventListener("pointerdown", (event) => {
+      if (event.target.closest("button, a")) return;
+      pointerStart = { x: event.clientX, y: event.clientY, id: event.pointerId };
+    });
+    carousel.addEventListener("pointerup", (event) => {
+      if (!pointerStart || pointerStart.id !== event.pointerId) return;
+      const dx = event.clientX - pointerStart.x;
+      const dy = event.clientY - pointerStart.y;
+      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.2) show(current + (dx < 0 ? 1 : -1));
+      pointerStart = null;
+    });
+    carousel.addEventListener("pointercancel", () => { pointerStart = null; });
     carousel.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowRight") show(current + 1);
-      if (event.key === "ArrowLeft") show(current - 1);
+      if (event.key === "ArrowRight") { event.preventDefault(); show(current + 1); }
+      if (event.key === "ArrowLeft") { event.preventDefault(); show(current - 1); }
     });
     carousel.tabIndex = 0;
     show(0);

@@ -1,115 +1,68 @@
 {{ define "main" }}
 {{ if eq .Section "articles" }}
 {{ $isVibranceArticle := in .Params.categories "Vibrance" }}
-<article class="container article-page{{ if $isVibranceArticle }} vibrance-article{{ end }}">
-  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane" data-debug-kind="{{ .Kind }}" data-debug-section="{{ .Section }}" data-debug-filedir="{{ .File.Dir }}"><ol><li><a href="{{ "/" | relURL }}">Accueil</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li><a href="{{ "/articles/" | relURL }}">Articles</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li aria-current="page">{{ .LinkTitle }}</li></ol></nav>
-  <header class="article-header">
-    <div class="article-meta-row"><p class="article-meta">{{ with .Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "02/01/2006" }}</time> · {{ .ReadingTime }} min de lecture</p>{{ with .Params.subcategory }}<span class="subcategory-badge">{{ . }}</span>{{ end }}</div>
-    <h1>{{ .Title }}</h1>
-    {{ with .Description }}<p class="article-lead">{{ . }}</p>{{ end }}
-    <p class="article-byline">Par {{ .Params.author | default site.Params.defaultAuthor }}</p>
+{{ if $isVibranceArticle }}
+<article class="vibrance-reading">
+  <div class="container vibrance-reading-top">
+    <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane"><ol><li><a href="{{ "/" | relURL }}">Accueil</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li><a href="{{ "/categories/vibrance/" | relURL }}">Vibrance</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li aria-current="page">{{ .Title }}</li></ol></nav>
+    <a class="vibrance-back-link" href="{{ "/categories/vibrance/" | relURL }}">← RETOUR À VIBRANCE</a>
+  </div>
+  <header class="vibrance-story-heading container">
+    <div class="vibrance-story-heading-meta"><span>VIBRANCE <i>✳</i> {{ .Params.subcategory | default "PORTRAIT" }}</span><span>{{ .Date | time.Format "02.01.2006" }}</span></div>
+    <h1>{{ .Title }}<span>.</span></h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
   </header>
-  {{ with .Params.cover }}<img class="article-feature-image{{ if $isVibranceArticle }} article-feature-image-vibrance{{ end }}" src="{{ . | relURL }}" alt="{{ $.Title | plainify }}" fetchpriority="high">{{ end }}
-  {{ if and $isVibranceArticle (or (or .Params.vibrance_intro .Params.vibrance_origins) (or (or .Params.vibrance_journey .Params.vibrance_vision) .Params.vibrance_spark)) }}
-  <section class="vibrance-carousel" data-vibrance-carousel aria-label="Portrait en séquences">
-    <div class="vibrance-carousel-top"><span class="eyebrow">VIBRANCE · LE PORTRAIT</span><span class="vibrance-counter" data-vibrance-counter aria-live="polite"></span></div>
+  {{ if or .Params.cover (or (or .Params.vibrance_intro .Params.vibrance_origins) (or (or .Params.vibrance_journey .Params.vibrance_vision) .Params.vibrance_spark)) }}
+  <section class="vibrance-experience container" data-vibrance-carousel aria-label="Récit visuel {{ .Title }}">
+    <div class="vibrance-experience-rail"><span class="vibrance-experience-label">UN VISAGE, UNE HISTOIRE, UN ÉCLAT.</span><span class="vibrance-counter" data-vibrance-counter aria-live="polite"></span></div>
     <div class="vibrance-slides" data-vibrance-slides>
-      {{ with .Params.vibrance_intro }}<article class="vibrance-slide"><div class="vibrance-slide-content">{{ with $.Params.vibrance_intro_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="{{ $.Title | plainify }} — portrait" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></div></article>{{ end }}
-      {{ with .Params.vibrance_origins }}<article class="vibrance-slide"><div class="vibrance-slide-content">{{ with $.Params.vibrance_origins_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="{{ $.Title | plainify }} — au-delà de l'image" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></div></article>{{ end }}
-      {{ with .Params.vibrance_journey }}<article class="vibrance-slide"><div class="vibrance-slide-content">{{ with $.Params.vibrance_journey_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="{{ $.Title | plainify }} — créativité plurielle" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></div></article>{{ end }}
-      {{ with .Params.vibrance_vision }}<article class="vibrance-slide"><div class="vibrance-slide-content">{{ with $.Params.vibrance_vision_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="{{ $.Title | plainify }} — personnalité à découvrir" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></div></article>{{ end }}
-      {{ with .Params.vibrance_spark }}<article class="vibrance-slide"><div class="vibrance-slide-content">{{ with $.Params.vibrance_spark_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="{{ $.Title | plainify }} — découvrir son univers" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></div></article>{{ end }}
+      {{ with .Params.cover }}
+      <article class="vibrance-slide vibrance-cover-slide" aria-label="Couverture du portrait">
+        <img class="vibrance-cover-image" src="{{ . | relURL }}" alt="Portrait de {{ $.Title | plainify }}" fetchpriority="high">
+        <div class="vibrance-cover-shade"></div>
+        <div class="vibrance-cover-caption"><span class="vibrance-cover-kicker">VIBRANCE · LE PORTRAIT</span><h2>{{ $.Title }}</h2>{{ with $.Description }}<p>{{ . }}</p>{{ end }}<span class="vibrance-cover-prompt">FAITES DÉFILER POUR ENTRER DANS L'HISTOIRE <b>↓</b></span></div>
+        <span class="vibrance-cover-index">01 <i>/</i> {{ $total := 1 }}{{ if $.Params.vibrance_intro }}{{ $total = add $total 1 }}{{ end }}{{ if $.Params.vibrance_origins }}{{ $total = add $total 1 }}{{ end }}{{ if $.Params.vibrance_journey }}{{ $total = add $total 1 }}{{ end }}{{ if $.Params.vibrance_vision }}{{ $total = add $total 1 }}{{ end }}{{ if $.Params.vibrance_spark }}{{ $total = add $total 1 }}{{ end }}{{ printf "%02d" $total }}</span>
+      </article>
+      {{ end }}
+      {{ with .Params.vibrance_intro }}{{ partial "vibrance-slide.html" (dict "text" . "image" $.Params.vibrance_intro_image "alt" (printf "%s — introduction" $.Title) "number" "02") }}{{ end }}
+      {{ with .Params.vibrance_origins }}{{ partial "vibrance-slide.html" (dict "text" . "image" $.Params.vibrance_origins_image "alt" (printf "%s — au-delà de l'image" $.Title) "number" "02") }}{{ end }}
+      {{ with .Params.vibrance_journey }}{{ partial "vibrance-slide.html" (dict "text" . "image" $.Params.vibrance_journey_image "alt" (printf "%s — créativité plurielle" $.Title) "number" "03") }}{{ end }}
+      {{ with .Params.vibrance_vision }}{{ partial "vibrance-slide.html" (dict "text" . "image" $.Params.vibrance_vision_image "alt" (printf "%s — personnalité à découvrir" $.Title) "number" "04") }}{{ end }}
+      {{ with .Params.vibrance_spark }}{{ partial "vibrance-slide.html" (dict "text" . "image" $.Params.vibrance_spark_image "alt" (printf "%s — découvrir son univers" $.Title) "number" "05") }}{{ end }}
     </div>
-    <div class="vibrance-carousel-controls"><button class="vibrance-arrow" type="button" data-vibrance-prev aria-label="Séquence précédente">←</button><div class="vibrance-dots" data-vibrance-dots aria-label="Choisir une séquence"></div><button class="vibrance-arrow" type="button" data-vibrance-next aria-label="Séquence suivante">→</button></div>
-    <p class="vibrance-swipe-hint">Faites défiler pour découvrir la suite</p>
+    <div class="vibrance-experience-controls"><button class="vibrance-arrow" type="button" data-vibrance-prev aria-label="Séquence précédente">←</button><div class="vibrance-progress"><div class="vibrance-progress-track"><span data-vibrance-progress></span></div><div class="vibrance-dots" data-vibrance-dots aria-label="Choisir une séquence"></div></div><button class="vibrance-arrow" type="button" data-vibrance-next aria-label="Séquence suivante">→</button></div>
+    <p class="vibrance-swipe-hint">Glissez, utilisez les flèches ou choisissez une étape pour poursuivre la découverte.</p>
   </section>
-  {{ else }}<div class="prose">{{ .Content }}</div>{{ end }}
+  {{ end }}
+  <footer class="vibrance-story-footer container">
+    <div class="vibrance-story-footer-mark">V.</div>
+    <div><p class="eyebrow">LA RENCONTRE CONTINUE</p><h2>Un autre regard.<br>Une autre histoire.</h2><a class="vibrance-read-link" href="{{ "/categories/vibrance/" | relURL }}">EXPLORER LES AUTRES PORTRAITS <span aria-hidden="true">⟶</span></a></div>
+  </footer>
+  <div class="vibrance-story-share container"><span>FAIRE CIRCULER L'HISTOIRE</span><a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://wa.me/?text={{ printf "%s %s" .Title .Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+</article>
+{{ else }}
+<article class="container article-page">
+  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane"><ol><li><a href="{{ "/" | relURL }}">Accueil</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li><a href="{{ "/articles/" | relURL }}">Articles</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li aria-current="page">{{ .LinkTitle }}</li></ol></nav>
+  <header class="article-header"><div class="article-meta-row"><p class="article-meta">{{ with .Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "02/01/2006" }}</time> · {{ .ReadingTime }} min de lecture</p>{{ with .Params.subcategory }}<span class="subcategory-badge">{{ . }}</span>{{ end }}</div><h1>{{ .Title }}</h1>{{ with .Description }}<p class="article-lead">{{ . }}</p>{{ end }}<p class="article-byline">Par {{ .Params.author | default site.Params.defaultAuthor }}</p></header>
+  {{ with .Params.cover }}<img class="article-feature-image" src="{{ . | relURL }}" alt="{{ $.Title | plainify }}" fetchpriority="high">{{ end }}
+  <div class="prose">{{ .Content }}</div>
   {{ with .Params.tags }}<div class="article-tags"><strong>Mots-clés :</strong> {{ range . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
   <div class="share-row"><strong>Partager :</strong><a href="https://www.facebook.com/sharer/sharer.php?u={{ $.Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $.Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://wa.me/?text={{ printf "%s %s" $.Title $.Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
-  <nav class="article-pagination" aria-label="Autres articles">
-    {{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><small>Article précédent</small><strong>{{ .Title }}</strong></a>{{ end }}
-    {{ with .NextInSection }}<a href="{{ .RelPermalink }}"><small>Article suivant</small><strong>{{ .Title }}</strong></a>{{ end }}
-  </nav>
+  <nav class="article-pagination" aria-label="Autres articles">{{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><small>Article précédent</small><strong>{{ .Title }}</strong></a>{{ end }}{{ with .NextInSection }}<a href="{{ .RelPermalink }}"><small>Article suivant</small><strong>{{ .Title }}</strong></a>{{ end }}</nav>
 </article>
+{{ end }}
 {{ else }}
 {{ $pathParts := split (strings.Trim .RelPermalink "/") "/" }}
 {{ $isSubcategory := and (ge (len $pathParts) 3) (eq (index $pathParts 0) "categories") }}
-{{ $parentSlug := "" }}
-{{ $parentCategoryName := "" }}
-{{ $parentSection := false }}
-{{ if $isSubcategory }}
-  {{ $parentSlug = index $pathParts 1 }}
-  {{ $parentCategoryName = $parentSlug | humanize }}
-  {{ $parentSection = site.GetPage (printf "/categories/%s/_index.md" $parentSlug) }}
-  {{ with $parentSection }}{{ $parentCategoryName = .LinkTitle }}{{ end }}
-{{ end }}
+{{ $parentSlug := "" }}{{ $parentCategoryName := "" }}{{ $parentSection := false }}
+{{ if $isSubcategory }}{{ $parentSlug = index $pathParts 1 }}{{ $parentCategoryName = $parentSlug | humanize }}{{ $parentSection = site.GetPage (printf "/categories/%s/_index.md" $parentSlug) }}{{ with $parentSection }}{{ $parentCategoryName = .LinkTitle }}{{ end }}{{ end }}
 <article class="container prose-page">
-  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane">
-    <ol>
-      <li><a href="{{ "/" | relURL }}">Accueil</a></li>
-      <li class="breadcrumb-separator" aria-hidden="true">/</li>
-      {{ if $isSubcategory }}
-        <li><a href="{{ printf "/categories/%s/" $parentSlug | relURL }}">{{ $parentCategoryName }}</a></li>
-        <li class="breadcrumb-separator" aria-hidden="true">/</li>
-        <li aria-current="page">{{ .LinkTitle }}</li>
-      {{ else }}
-        <li aria-current="page">{{ .LinkTitle }}</li>
-      {{ end }}
-    </ol>
-  </nav>
+  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane"><ol><li><a href="{{ "/" | relURL }}">Accueil</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li>{{ if $isSubcategory }}<li><a href="{{ printf "/categories/%s/" $parentSlug | relURL }}">{{ $parentCategoryName }}</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li aria-current="page">{{ .LinkTitle }}</li>{{ else }}<li aria-current="page">{{ .LinkTitle }}</li>{{ end }}</ol></nav>
   <header class="prose-page-header">{{ if $isSubcategory }}<h1><span class="heading-icon" aria-hidden="true">{{ partial "subcategory-icon.html" .Title }}</span>{{ .Title }}</h1>{{ else }}<h1>{{ .Title }}</h1>{{ end }}{{ with .Description }}<p>{{ . }}</p>{{ end }}</header>
-  {{ $isVibrance := in .Params.categories "Vibrance" }}
-  {{ $hasVibranceParts := or (or .Params.vibrance_intro .Params.vibrance_origins) (or (or .Params.vibrance_journey .Params.vibrance_vision) .Params.vibrance_spark) }}
-  {{ if and $isVibrance $hasVibranceParts }}
-    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
-    <div class="vibrance-portrait">
-      {{ with .Params.vibrance_intro }}<section class="vibrance-chapter"><p class="eyebrow">01 — LA RENCONTRE</p><h2>Le portrait</h2>{{ with $.Params.vibrance_intro_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Le portrait : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
-      {{ with .Params.vibrance_origins }}<section class="vibrance-chapter"><p class="eyebrow">02 — LES RACINES</p><h2>Les origines et le déclic</h2>{{ with $.Params.vibrance_origins_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Les origines et le déclic : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
-      {{ with .Params.vibrance_journey }}<section class="vibrance-chapter"><p class="eyebrow">03 — LE CHEMIN</p><h2>Le parcours</h2>{{ with $.Params.vibrance_journey_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Le parcours : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
-      {{ with .Params.vibrance_vision }}<section class="vibrance-chapter"><p class="eyebrow">04 — LA VISION</p><h2>Les convictions et les projets</h2>{{ with $.Params.vibrance_vision_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Les convictions et les projets : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
-      {{ with .Params.vibrance_spark }}<section class="vibrance-chapter"><p class="eyebrow">05 — L'ÉCLAT</p><h2>Ce qui fait la différence</h2>{{ with $.Params.vibrance_spark_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Ce qui fait la différence : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
-    </div>
-  {{ else }}<div class="prose">{{ .Content }}</div>{{ end }}
-  {{ if $isSubcategory }}
-    {{ $wantedSubcategory := lower (strings.TrimSpace .Title) }}
-    {{ $allArticles := where site.RegularPages "Section" "eq" "articles" }}
-    {{ $subcategoryArticles := slice }}
-    {{ range $allArticles }}
-      {{ $articleSubcategory := lower (strings.TrimSpace (printf "%v" .Params.subcategory)) }}
-      {{ if eq $articleSubcategory $wantedSubcategory }}
-        {{ $subcategoryArticles = $subcategoryArticles | append . }}
-      {{ end }}
-    {{ end }}
-    <section class="subcategory-articles" aria-label="Articles de {{ .Title }}">
-      <h2>Les articles de cette sous-rubrique</h2>
-      <div class="article-grid">
-        {{ range sort $subcategoryArticles "Date" "desc" }}
-          {{ $article := . }}
-          {{ $articleIsVibrance := in $article.Params.categories "Vibrance" }}
-          <article class="article-card">
-            {{ with $article.Params.cover }}<a class="article-cover{{ if $articleIsVibrance }} article-cover-vibrance{{ end }}" href="{{ $article.RelPermalink }}"><img src="{{ . | relURL }}" alt="{{ $article.Title | plainify }}" loading="lazy"></a>{{ else }}<a class="article-cover cover-placeholder" href="{{ $article.RelPermalink }}" aria-label="Lire {{ $article.Title }}"><span>WO</span></a>{{ end }}
-            <div class="article-body"><div class="article-meta-row"><p class="article-meta">{{ with $article.Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ $article.Date.Format "2006-01-02" }}">{{ $article.Date | time.Format "02/01/2006" }}</time></p>{{ with $article.Params.subcategory }}<span class="subcategory-badge">{{ . }}</span>{{ end }}</div><h3><a href="{{ $article.RelPermalink }}">{{ $article.Title }}</a></h3><p>{{ $article.Description | default $article.Summary | plainify | truncate 145 }}</p><a class="text-link" href="{{ $article.RelPermalink }}">Lire l'article <span aria-hidden="true">→</span></a></div>
-          </article>
-        {{ else }}
-          <div class="empty-state"><h3>Les découvertes arrivent bientôt.</h3><p>Wo reviendra avec des histoires à partager dans cette sous-rubrique.</p></div>
-        {{ end }}
-      </div>
-    </section>
-  {{ end }}
-  {{ if and $isSubcategory $parentSection }}
-    {{ if gt (len $parentSection.Pages) 1 }}
-    <nav class="subcategory-siblings" aria-label="Autres sous-rubriques de {{ $parentCategoryName }}">
-      <h2>Explorer aussi dans {{ $parentCategoryName }}</h2>
-      <div class="subcategory-grid">
-        {{ range $parentSection.Pages.ByWeight }}
-          {{ if ne .RelPermalink $.RelPermalink }}
-            <a class="subcategory-card" href="{{ .RelPermalink }}"><strong>{{ .LinkTitle }}</strong>{{ with .Description }}<span>{{ . }}</span>{{ end }}<small>Explorer →</small></a>
-          {{ end }}
-        {{ end }}
-      </div>
-    </nav>
-    {{ end }}
-  {{ end }}
+  {{ $isVibrance := in .Params.categories "Vibrance" }}{{ $hasVibranceParts := or (or .Params.vibrance_intro .Params.vibrance_origins) (or (or .Params.vibrance_journey .Params.vibrance_vision) .Params.vibrance_spark) }}
+  {{ if and $isVibrance $hasVibranceParts }}{{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}<div class="vibrance-portrait">{{ with .Params.vibrance_intro }}<section class="vibrance-chapter"><p class="eyebrow">01 — LA RENCONTRE</p><h2>Le portrait</h2>{{ with $.Params.vibrance_intro_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Le portrait : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}{{ with .Params.vibrance_origins }}<section class="vibrance-chapter"><p class="eyebrow">02 — LES RACINES</p><h2>Les origines et le déclic</h2>{{ with $.Params.vibrance_origins_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Les origines et le déclic : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}{{ with .Params.vibrance_journey }}<section class="vibrance-chapter"><p class="eyebrow">03 — LE CHEMIN</p><h2>Le parcours</h2>{{ with $.Params.vibrance_journey_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Le parcours : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}{{ with .Params.vibrance_vision }}<section class="vibrance-chapter"><p class="eyebrow">04 — LA VISION</p><h2>Les convictions et les projets</h2>{{ with $.Params.vibrance_vision_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Les convictions et les projets : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}{{ with .Params.vibrance_spark }}<section class="vibrance-chapter"><p class="eyebrow">05 — L'ÉCLAT</p><h2>Ce qui fait la différence</h2>{{ with $.Params.vibrance_spark_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Illustration — Ce qui fait la différence : {{ $.Title | plainify }}" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}</div>{{ else }}<div class="prose">{{ .Content }}</div>{{ end }}
+  {{ if $isSubcategory }}{{ $wantedSubcategory := lower (strings.TrimSpace .Title) }}{{ $allArticles := where site.RegularPages "Section" "eq" "articles" }}{{ $subcategoryArticles := slice }}{{ range $allArticles }}{{ $articleSubcategory := lower (strings.TrimSpace (printf "%v" .Params.subcategory)) }}{{ if eq $articleSubcategory $wantedSubcategory }}{{ $subcategoryArticles = $subcategoryArticles | append . }}{{ end }}{{ end }}<section class="subcategory-articles" aria-label="Articles de {{ .Title }}"><h2>Les articles de cette sous-rubrique</h2><div class="article-grid">{{ range sort $subcategoryArticles "Date" "desc" }}{{ $article := . }}{{ $articleIsVibrance := in $article.Params.categories "Vibrance" }}<article class="article-card">{{ with $article.Params.cover }}<a class="article-cover{{ if $articleIsVibrance }} article-cover-vibrance{{ end }}" href="{{ $article.RelPermalink }}"><img src="{{ . | relURL }}" alt="{{ $article.Title | plainify }}" loading="lazy"></a>{{ else }}<a class="article-cover cover-placeholder" href="{{ $article.RelPermalink }}" aria-label="Lire {{ $article.Title }}"><span>WO</span></a>{{ end }}<div class="article-body"><div class="article-meta-row"><p class="article-meta">{{ with $article.Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ $article.Date.Format "2006-01-02" }}">{{ $article.Date | time.Format "02/01/2006" }}</time></p>{{ with $article.Params.subcategory }}<span class="subcategory-badge">{{ . }}</span>{{ end }}</div><h3><a href="{{ $article.RelPermalink }}">{{ $article.Title }}</a></h3><p>{{ $article.Description | default $article.Summary | plainify | truncate 145 }}</p><a class="text-link" href="{{ $article.RelPermalink }}">Lire l'article <span aria-hidden="true">→</span></a></div></article>{{ else }}<div class="empty-state"><h3>Les découvertes arrivent bientôt.</h3><p>Wo reviendra avec des histoires à partager dans cette sous-rubrique.</p></div>{{ end }}</div></section>{{ end }}
+  {{ if and $isSubcategory $parentSection }}{{ if gt (len $parentSection.Pages) 1 }}<nav class="subcategory-siblings" aria-label="Autres sous-rubriques de {{ $parentCategoryName }}"><h2>Explorer aussi dans {{ $parentCategoryName }}</h2><div class="subcategory-grid">{{ range $parentSection.Pages.ByWeight }}{{ if ne .RelPermalink $.RelPermalink }}<a class="subcategory-card" href="{{ .RelPermalink }}"><strong>{{ .LinkTitle }}</strong>{{ with .Description }}<span>{{ . }}</span>{{ end }}<small>Explorer →</small></a>{{ end }}{{ end }}</div></nav>{{ end }}{{ end }}
 </article>
 {{ end }}
 {{ end }}

@@ -1,0 +1,16 @@
+{{- $text := .text | default "" -}}
+{{- $lines := split (strings.TrimSpace $text) "\n" -}}
+{{- $heading := "" -}}
+{{- $body := "" -}}
+{{- if gt (len $lines) 0 -}}{{- $heading = index $lines 0 -}}{{- end -}}
+{{- if gt (len $lines) 1 -}}{{- $body = delimit (after 1 $lines) "\n" -}}{{- end -}}
+<article class="vibrance-slide" aria-label="Séquence {{ .number }}">
+  <div class="vibrance-slide-content{{ if not .image }} vibrance-slide-no-image{{ end }}">
+    {{ with .image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="{{ $.alt | default $.heading | default "Image du portrait" }}" loading="lazy"></figure>{{ end }}
+    <div class="vibrance-slide-copy">
+      <p class="vibrance-slide-number">{{ .number }} <span>/</span> VIBRANCE</p>
+      {{ with $heading }}<p class="vibrance-slide-heading">{{ . }}</p>{{ end }}
+      <div class="prose">{{ $body | markdownify }}</div>
+    </div>
+  </div>
+</article>
