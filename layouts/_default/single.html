@@ -25,9 +25,8 @@
 {{ if $isSubcategory }}
   {{ $parentSlug = path.Base .File.Dir }}
   {{ $parentCategoryName = $parentSlug | humanize }}
-  {{ $parentSection = site.GetPage (printf "/categories/%s" $parentSlug) }}
+  {{ $parentSection = site.GetPage (printf "/categories/%s/_index.md" $parentSlug) }}
   {{ with $parentSection }}{{ $parentCategoryName = .LinkTitle }}{{ end }}
-  <!-- DEBUG subcategory={{ $isSubcategory }} section={{ .Section }} kind={{ .Kind }} filedir={{ .File.Dir }} slug={{ $parentSlug }} parentfound={{ if $parentSection }}yes{{ else }}no{{ end }} -->
 {{ end }}
 <article class="container prose-page">
   <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane">
