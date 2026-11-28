@@ -3,7 +3,7 @@
 <article class="container article-page">
   <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane" data-debug-kind="{{ .Kind }}" data-debug-section="{{ .Section }}" data-debug-filedir="{{ .File.Dir }}"><ol><li><a href="{{ "/" | relURL }}">Accueil</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li><a href="{{ "/articles/" | relURL }}">Articles</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li aria-current="page">{{ .LinkTitle }}</li></ol></nav>
   <header class="article-header">
-    <p class="article-meta">{{ with .Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "02/01/2006" }}</time> · {{ .ReadingTime }} min de lecture</p>
+    <div class="article-meta-row"><p class="article-meta">{{ with .Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "02/01/2006" }}</time> · {{ .ReadingTime }} min de lecture</p>{{ with .Params.subcategory }}<span class="subcategory-badge">{{ . }}</span>{{ end }}</div>
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p class="article-lead">{{ . }}</p>{{ end }}
     <p class="article-byline">Par {{ .Params.author | default site.Params.defaultAuthor }}</p>
@@ -62,7 +62,7 @@
           {{ $article := . }}
           <article class="article-card">
             {{ with $article.Params.cover }}<a class="article-cover" href="{{ $article.RelPermalink }}"><img src="{{ . | relURL }}" alt="{{ $article.Title | plainify }}" loading="lazy"></a>{{ else }}<a class="article-cover cover-placeholder" href="{{ $article.RelPermalink }}" aria-label="Lire {{ $article.Title }}"><span>WO</span></a>{{ end }}
-            <div class="article-body"><p class="article-meta">{{ with $article.Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ $article.Date.Format "2006-01-02" }}">{{ $article.Date | time.Format "02/01/2006" }}</time></p><h3><a href="{{ $article.RelPermalink }}">{{ $article.Title }}</a></h3><p>{{ $article.Description | default $article.Summary | plainify | truncate 145 }}</p><a class="text-link" href="{{ $article.RelPermalink }}">Lire l'article <span aria-hidden="true">→</span></a></div>
+            <div class="article-body"><div class="article-meta-row"><p class="article-meta">{{ with $article.Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ $article.Date.Format "2006-01-02" }}">{{ $article.Date | time.Format "02/01/2006" }}</time></p>{{ with $article.Params.subcategory }}<span class="subcategory-badge">{{ . }}</span>{{ end }}</div><h3><a href="{{ $article.RelPermalink }}">{{ $article.Title }}</a></h3><p>{{ $article.Description | default $article.Summary | plainify | truncate 145 }}</p><a class="text-link" href="{{ $article.RelPermalink }}">Lire l'article <span aria-hidden="true">→</span></a></div>
           </article>
         {{ else }}
           <div class="empty-state"><h3>Les découvertes arrivent bientôt.</h3><p>Wo reviendra avec des histoires à partager dans cette sous-rubrique.</p></div>
