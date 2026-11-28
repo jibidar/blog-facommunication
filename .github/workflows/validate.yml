@@ -59,8 +59,8 @@ jobs:
           ]:
               exists(path)
 
-          contains("public/articles/index.html", 'aria-current="page">Articles')
-          contains("public/categories/culture/index.html", 'aria-current="page">Culture')
+          contains("public/articles/index.html", 'aria-current=page>Articles')
+          contains("public/categories/culture/index.html", 'aria-current=page>Culture')
           contains("public/categories/culture/livres-patrimoine/index.html", 'href=/categories/culture/>Culture</a>')
           contains("public/categories/culture/livres-patrimoine/index.html", 'aria-current=page>Livres & patrimoine')
           contains("public/categories/culture/livres-patrimoine/index.html", 'Autres sous-rubriques de Culture')
@@ -72,8 +72,14 @@ jobs:
           except Exception as exc:
               checks.append((f"public/index.json is valid JSON ({exc})", False))
 
-          subcategory_count = len(list(Path("public/categories").glob("*/*/index.html")))
-          checks.append((f"18 subcategory pages (found {subcategory_count})", subcategory_count == 18))
+          subcategory_sources = [p for p in Path("content/categories").glob("*/*.md") if p.name != "_index.md"]
+          missing_subcategory_pages = [
+              str(Path("public") / p.relative_to("content").with_suffix("") / "index.html")
+              for p in subcategory_sources
+              if not (Path("public") / p.relative_to("content").with_suffix("") / "index.html").is_file()
+          ]
+          checks.append((f"18 subcategory source files (found {len(subcategory_sources)})", len(subcategory_sources) == 18))
+          checks.append((f"all subcategory pages rendered (missing: {missing_subcategory_pages})", not missing_subcategory_pages))
 
           for label, ok in checks:
               print(("OK   " if ok else "FAIL ") + label)
