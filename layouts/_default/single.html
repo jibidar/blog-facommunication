@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ if eq .Section "articles" }}
 <article class="container article-page">
-  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane"><ol><li><a href="{{ "/" | relURL }}">Accueil</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li aria-current="page"><a href="{{ "/articles/" | relURL }}">Articles</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li aria-current="location">{{ .LinkTitle }}</li></ol></nav>
+  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane"><ol><li><a href="{{ "/" | relURL }}">Accueil</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li><a href="{{ "/articles/" | relURL }}">Articles</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li aria-current="page">{{ .LinkTitle }}</li></ol></nav>
   <header class="article-header">
     <p class="article-meta">{{ with .Params.categories }}{{ delimit . " · " }} · {{ end }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "02/01/2006" }}</time> · {{ .ReadingTime }} min de lecture</p>
     <h1>{{ .Title }}</h1>
