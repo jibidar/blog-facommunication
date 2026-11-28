@@ -113,6 +113,46 @@ content:
         type: image
         options:
           media: images
+      - name: vibrance_intro
+        label: "Vibrance — 1. Le portrait"
+        type: rich-text
+        description: "Pour les articles Vibrance uniquement : présenter la personnalité et ce qui la rend singulière."
+        options:
+          format: markdown
+          media: images
+          path: articles
+      - name: vibrance_origins
+        label: "Vibrance — 2. Les origines et le déclic"
+        type: rich-text
+        description: "Pour les articles Vibrance uniquement : raconter les racines, les influences et le moment déclencheur."
+        options:
+          format: markdown
+          media: images
+          path: articles
+      - name: vibrance_journey
+        label: "Vibrance — 3. Le parcours"
+        type: rich-text
+        description: "Pour les articles Vibrance uniquement : retracer les étapes, les choix et les défis."
+        options:
+          format: markdown
+          media: images
+          path: articles
+      - name: vibrance_vision
+        label: "Vibrance — 4. Les convictions et les projets"
+        type: rich-text
+        description: "Pour les articles Vibrance uniquement : partager la vision, les engagements et les projets."
+        options:
+          format: markdown
+          media: images
+          path: articles
+      - name: vibrance_spark
+        label: "Vibrance — 5. L'éclat"
+        type: rich-text
+        description: "Pour les articles Vibrance uniquement : révéler la signature personnelle, ce qui fait la différence et le message à retenir."
+        options:
+          format: markdown
+          media: images
+          path: articles
       - name: body
         label: Contenu de l'article
         type: rich-text
