@@ -18,10 +18,46 @@
   </nav>
 </article>
 {{ else }}
+{{ $isSubcategory := eq .Section "categories" }}
+{{ $parentSlug := "" }}
+{{ $parentCategoryName := "" }}
+{{ $parentSection := false }}
+{{ if $isSubcategory }}
+  {{ $parentSlug = path.Base .File.Dir }}
+  {{ $parentCategoryName = $parentSlug | humanize }}
+  {{ $parentSection = site.GetPage (printf "/categories/%s" $parentSlug) }}
+  {{ with $parentSection }}{{ $parentCategoryName = .LinkTitle }}{{ end }}
+{{ end }}
 <article class="container prose-page">
-  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane"><ol><li><a href="{{ "/" | relURL }}">Accueil</a></li><li class="breadcrumb-separator" aria-hidden="true">/</li><li aria-current="page">{{ .LinkTitle }}</li></ol></nav>
+  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane">
+    <ol>
+      <li><a href="{{ "/" | relURL }}">Accueil</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">/</li>
+      {{ if $isSubcategory }}
+        <li><a href="{{ printf "/categories/%s/" $parentSlug | relURL }}">{{ $parentCategoryName }}</a></li>
+        <li class="breadcrumb-separator" aria-hidden="true">/</li>
+        <li aria-current="page">{{ .LinkTitle }}</li>
+      {{ else }}
+        <li aria-current="page">{{ .LinkTitle }}</li>
+      {{ end }}
+    </ol>
+  </nav>
   <header class="prose-page-header"><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}</header>
   <div class="prose">{{ .Content }}</div>
+  {{ if and $isSubcategory $parentSection }}
+    {{ if gt (len $parentSection.Pages) 1 }}
+    <nav class="subcategory-siblings" aria-label="Autres sous-rubriques de {{ $parentCategoryName }}">
+      <h2>Explorer aussi dans {{ $parentCategoryName }}</h2>
+      <div class="subcategory-grid">
+        {{ range $parentSection.Pages.ByWeight }}
+          {{ if ne .RelPermalink $.RelPermalink }}
+            <a class="subcategory-card" href="{{ .RelPermalink }}"><strong>{{ .LinkTitle }}</strong>{{ with .Description }}<span>{{ . }}</span>{{ end }}<small>Explorer →</small></a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </nav>
+    {{ end }}
+  {{ end }}
 </article>
 {{ end }}
 {{ end }}
