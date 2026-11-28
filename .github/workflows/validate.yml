@@ -42,8 +42,7 @@ jobs:
           grep -q 'aria-current="page">Articles' public/articles/index.html
           test -s public/categories/index.html
           grep -q 'aria-current="page">Culture' public/categories/culture/index.html
-          head -c 2500 public/categories/culture/livres-patrimoine/index.html
-          printf '\\n'
+          grep -q 'data-debug-kind=' public/categories/culture/livres-patrimoine/index.html
           grep -q 'Autres sous-rubriques de Culture' public/categories/culture/livres-patrimoine/index.html
           grep -q 'href="/categories/culture/">Culture</a>' public/categories/culture/livres-patrimoine/index.html
           grep -q 'aria-current="page">Livres &amp; patrimoine' public/categories/culture/livres-patrimoine/index.html
