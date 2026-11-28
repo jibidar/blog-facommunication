@@ -7,5 +7,6 @@ categories:
   - Culture
 author: FA COMMUNICATION
 subcategory: Livres & patrimoine
+cover: /images/annie-spratt-eafou3bqkme-unsplash2.jpg
 ---
 Ceci est un test de fonctionnement de Pages CMS. Cet article ne doit pas être publié. Nous vérifions la création, l'enregistrement et l'affichage des articles dans le blog Wo.
