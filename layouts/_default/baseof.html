@@ -69,5 +69,6 @@
       </div>
     </div>
   </footer>
+  {{ if and .IsPage (in .Params.categories "Vibrance") }}<script src="{{ "/js/vibrance-carousel.js" | relURL }}" defer></script>{{ end }}
 </body>
 </html>
