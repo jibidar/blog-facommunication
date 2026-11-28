@@ -54,12 +54,28 @@ content:
             - Vibrance
       - name: subcategory
         label: Sous-rubrique
-        type: reference
-        description: "Facultatif. Choisir la sous-rubrique correspondant au sujet de l'article."
+        type: select
+        description: "Facultatif. Choisir la sous-rubrique correspondant au sujet de l'article. Si une nouvelle sous-rubrique est créée, ajouter également son titre à cette liste dans .pages.yml."
         options:
-          collection: subcategories
-          value: "{primary}"
-          label: "{primary}"
+          values:
+            - Musique & scène
+            - Cinéma & audiovisuel
+            - Livres & patrimoine
+            - Portraits
+            - Parcours & métiers
+            - Initiatives
+            - Intelligence artificielle
+            - Innovation & tech
+            - Usages numériques
+            - Jeunesse & éducation
+            - Économie & société
+            - Environnement & citoyenneté
+            - Design & identité visuelle
+            - Photographie & vidéo
+            - Mode & création
+            - Visages
+            - Parcours singuliers
+            - Talents émergents
       - name: tags
         label: Mots-clés
         type: string
