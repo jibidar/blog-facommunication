@@ -10,7 +10,15 @@
     <p class="article-byline">Par {{ .Params.author | default site.Params.defaultAuthor }}</p>
   </header>
   {{ with .Params.cover }}<img class="article-feature-image{{ if $isVibranceArticle }} article-feature-image-vibrance{{ end }}" src="{{ . | relURL }}" alt="{{ $.Title | plainify }}" fetchpriority="high">{{ end }}
-  <div class="prose">{{ .Content }}</div>
+  {{ if and $isVibranceArticle (or (or .Params.vibrance_intro .Params.vibrance_origins) (or (or .Params.vibrance_journey .Params.vibrance_vision) .Params.vibrance_spark)) }}
+  <div class="vibrance-portrait">
+    {{ with .Params.vibrance_intro }}<section class="vibrance-chapter">{{ with $.Params.vibrance_intro_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Vanessa Johnson — portrait" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
+    {{ with .Params.vibrance_origins }}<section class="vibrance-chapter">{{ with $.Params.vibrance_origins_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Vanessa Johnson — au-delà de l'image" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
+    {{ with .Params.vibrance_journey }}<section class="vibrance-chapter">{{ with $.Params.vibrance_journey_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Vanessa Johnson — créativité plurielle" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
+    {{ with .Params.vibrance_vision }}<section class="vibrance-chapter">{{ with $.Params.vibrance_vision_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Vanessa Johnson — personnalité à découvrir" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
+    {{ with .Params.vibrance_spark }}<section class="vibrance-chapter">{{ with $.Params.vibrance_spark_image }}<figure class="vibrance-chapter-media"><img src="{{ . | relURL }}" alt="Vanessa Johnson — découvrir son univers" loading="lazy"></figure>{{ end }}<div class="prose">{{ . | markdownify }}</div></section>{{ end }}
+  </div>
+  {{ else }}<div class="prose">{{ .Content }}</div>{{ end }}
   {{ with .Params.tags }}<div class="article-tags"><strong>Mots-clés :</strong> {{ range . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
   <div class="share-row"><strong>Partager :</strong><a href="https://www.facebook.com/sharer/sharer.php?u={{ $.Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $.Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://wa.me/?text={{ printf "%s %s" $.Title $.Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
   <nav class="article-pagination" aria-label="Autres articles">
