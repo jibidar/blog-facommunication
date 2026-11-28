@@ -15,7 +15,7 @@ content:
     format: yaml-frontmatter
     filename: "{year}-{month}-{day}-{primary}.md"
     view:
-      fields: [title, date, categories, draft]
+      fields: [title, date, categories, featured, draft]
       primary: title
       sort: [date, title]
       default:
@@ -34,6 +34,11 @@ content:
         label: Brouillon
         type: boolean
         default: true
+      - name: featured
+        label: À la une
+        type: boolean
+        default: false
+        description: "Activer pour proposer cet article dans la sélection de la page d'accueil. Six articles au maximum seront affichés."
       - name: description
         label: Résumé
         type: text
