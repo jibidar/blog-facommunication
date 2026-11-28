@@ -4,7 +4,7 @@
   {{ $parentSlug := "" }}
   {{ $parentCategoryName := "" }}
   {{ with .File }}
-    {{ if and (eq $.Section "categories") (ne .BaseFileName "_index") }}
+    {{ if and (strings.HasPrefix .Dir "categories/") (ne .BaseFileName "_index") }}
       {{ $isSubcategory = true }}
       {{ $parentSlug = path.Base .Dir }}
       {{ $parentCategoryName = $parentSlug | humanize }}
