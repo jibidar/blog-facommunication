@@ -8,7 +8,7 @@ categories:
 author: FA COMMUNICATION
 subcategory: Livres & patrimoine
 cover: /images/annie-spratt-eafou3bqkme-unsplash2.jpg
-featured: false
+featured: true
 tags:
   - Wo, FA Communication, Afrique
 ---
