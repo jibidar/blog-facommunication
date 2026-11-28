@@ -5,8 +5,8 @@
       <li><a href="{{ "/" | relURL }}">Accueil</a></li>
       <li class="breadcrumb-separator" aria-hidden="true">/</li>
       {{ if and (eq .Section "categories") .Params.parentCategory }}
-        {{ $parentPath := printf "/categories/%s" (.Params.parentCategory | urlize) }}
-        {{ with site.GetPage $parentPath }}<li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}
+        {{ $parentSlug := .Params.parentCategory | urlize }}
+        <li><a href="{{ printf "/categories/%s/" $parentSlug | relURL }}">{{ .Params.parentCategory }}</a></li>
         <li class="breadcrumb-separator" aria-hidden="true">/</li>
         <li aria-current="page">{{ .LinkTitle }}</li>
       {{ else if eq .Section "categories" }}
@@ -40,7 +40,8 @@
   </section>
   {{ end }}
   {{ if and (eq .Section "categories") .Params.parentCategory }}
-    {{ $parentPath := printf "/categories/%s" (.Params.parentCategory | urlize) }}
+    {{ $parentSlug := .Params.parentCategory | urlize }}
+    {{ $parentPath := printf "/categories/%s/_index.md" $parentSlug }}
     {{ with site.GetPage $parentPath }}
       {{ if gt (len .Pages) 1 }}
       <nav class="subcategory-siblings" aria-label="Autres sous-rubriques de {{ .LinkTitle }}">
