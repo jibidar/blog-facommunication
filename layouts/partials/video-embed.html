@@ -1,0 +1,23 @@
+{{- $url := urls.Parse .url -}}
+{{- $host := lower $url.Hostname -}}
+{{- $id := "" -}}
+{{- if eq $host "youtu.be" -}}
+  {{- $id = strings.TrimPrefix "/" $url.Path -}}
+{{- else if or (eq $host "youtube.com") (eq $host "www.youtube.com") (eq $host "m.youtube.com") (eq $host "youtube-nocookie.com") (eq $host "www.youtube-nocookie.com") -}}
+  {{- if eq $url.Path "/watch" -}}{{- $id = $url.Query.Get "v" -}}{{- else if or (hasPrefix $url.Path "/embed/") (hasPrefix $url.Path "/shorts/") -}}{{- $id = index (split (strings.Trim $url.Path "/") "/") 1 -}}{{- end -}}
+{{- end -}}
+{{- if and $id (findRE "^[A-Za-z0-9_-]{11}$" $id) -}}
+<section class="wo-video" aria-label="Vidéo : {{ .title | htmlEscape }}">
+  <div class="wo-video-frame" data-wo-video data-video-id="{{ $id }}" data-video-title="{{ .title | htmlEscape }}">
+    <button class="wo-video-trigger" type="button" data-wo-video-trigger aria-label="Lire la vidéo : {{ .title | htmlEscape }}">
+      <span class="wo-video-play" aria-hidden="true">▶</span>
+      <span class="wo-video-kicker">WO · À VOIR EN VIDÉO</span>
+      <strong>{{ .title }}</strong>
+      <small>La vidéo se charge lorsque vous appuyez sur lecture</small>
+    </button>
+  </div>
+  {{ with .caption }}<p class="wo-video-caption">{{ . | markdownify }}</p>{{ end }}
+</section>
+{{- else -}}
+<p class="wo-video-error">Lien vidéo non reconnu. Utilisez une URL YouTube de type youtube.com/watch?v=… ou youtu.be/…</p>
+{{- end -}}

@@ -113,6 +113,18 @@ content:
         type: image
         options:
           media: images
+      - name: video_url
+        label: Vidéo YouTube (facultative)
+        type: string
+        description: "Coller le lien YouTube complet. La vidéo s'ouvre uniquement après un clic du lecteur."
+      - name: video_title
+        label: Titre de la vidéo
+        type: string
+        description: "Facultatif. Un titre éditorial court pour présenter la vidéo."
+      - name: video_caption
+        label: Légende de la vidéo
+        type: text
+        description: "Facultatif. Expliquer en une phrase ce que le lecteur va découvrir."
       - name: vibrance_intro
         label: "Vibrance — 1. Le portrait"
         type: rich-text

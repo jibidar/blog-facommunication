@@ -1,0 +1,4 @@
+<article class="vibrance-slide vibrance-video-slide" aria-label="Séquence vidéo">
+  <div class="vibrance-video-heading"><p class="eyebrow">VIBRANCE · EN MOUVEMENT</p><h2>{{ .title }}</h2>{{ with .caption }}<p>{{ . | plainify }}</p>{{ end }}</div>
+  {{ partial "video-embed.html" . }}
+</article>
