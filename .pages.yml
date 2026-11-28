@@ -121,6 +121,11 @@ content:
           format: markdown
           media: images
           path: articles
+      - name: vibrance_intro_image
+        label: "Vibrance — Image — Le portrait"
+        type: image
+        options:
+          media: images
       - name: vibrance_origins
         label: "Vibrance — 2. Les origines et le déclic"
         type: rich-text
@@ -129,6 +134,11 @@ content:
           format: markdown
           media: images
           path: articles
+      - name: vibrance_origins_image
+        label: "Vibrance — Image — Les origines et le déclic"
+        type: image
+        options:
+          media: images
       - name: vibrance_journey
         label: "Vibrance — 3. Le parcours"
         type: rich-text
@@ -137,6 +147,11 @@ content:
           format: markdown
           media: images
           path: articles
+      - name: vibrance_journey_image
+        label: "Vibrance — Image — Le parcours"
+        type: image
+        options:
+          media: images
       - name: vibrance_vision
         label: "Vibrance — 4. Les convictions et les projets"
         type: rich-text
@@ -145,6 +160,11 @@ content:
           format: markdown
           media: images
           path: articles
+      - name: vibrance_vision_image
+        label: "Vibrance — Image — Les convictions et les projets"
+        type: image
+        options:
+          media: images
       - name: vibrance_spark
         label: "Vibrance — 5. L'éclat"
         type: rich-text
@@ -153,6 +173,11 @@ content:
           format: markdown
           media: images
           path: articles
+      - name: vibrance_spark_image
+        label: "Vibrance — Image — L'éclat"
+        type: image
+        options:
+          media: images
       - name: body
         label: Contenu de l'article
         type: rich-text
