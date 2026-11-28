@@ -1,6 +1,9 @@
 name: Build and deploy Hugo site
 
 on:
+  push:
+    branches:
+      - setup/initial-hugo-foundation
   workflow_dispatch:
 
 permissions:
