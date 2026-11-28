@@ -4,9 +4,9 @@
     <ol>
       <li><a href="{{ "/" | relURL }}">Accueil</a></li>
       <li class="breadcrumb-separator" aria-hidden="true">/</li>
-      {{ if and (eq .Section "categories") .Params.parentCategory }}
-        {{ $parentSlug := .Params.parentCategory | urlize }}
-        <li><a href="{{ printf "/categories/%s/" $parentSlug | relURL }}">{{ .Params.parentCategory }}</a></li>
+      {{ if and (eq .Section "categories") .Params.parentcategory }}
+        {{ $parentSlug := .Params.parentcategory | urlize }}
+        <li><a href="{{ printf "/categories/%s/" $parentSlug | relURL }}">{{ .Params.parentcategory }}</a></li>
         <li class="breadcrumb-separator" aria-hidden="true">/</li>
         <li aria-current="page">{{ .LinkTitle }}</li>
       {{ else if eq .Section "categories" }}
@@ -23,13 +23,13 @@
   {{ if eq .Section "categories" }}
     {{ $allArticles := where site.RegularPages "Section" "eq" "articles" }}
     {{ $categoryName := .Title }}
-    {{ if .Params.parentCategory }}{{ $categoryName = .Params.parentCategory }}{{ end }}
+    {{ if .Params.parentcategory }}{{ $categoryName = .Params.parentcategory }}{{ end }}
     {{ $pages = where $allArticles "Params.categories" "intersect" (slice $categoryName) }}
-    {{ if .Params.parentCategory }}
+    {{ if .Params.parentcategory }}
       {{ $pages = where $pages "Params.subcategory" "eq" .Title }}
     {{ end }}
   {{ end }}
-  {{ if and (eq .Section "categories") (not .Params.parentCategory) .Pages }}
+  {{ if and (eq .Section "categories") (not .Params.parentcategory) .Pages }}
   <section class="subcategory-section" aria-label="Sous-rubriques de {{ .Title }}">
     <h2>Explorer {{ .Title }}</h2>
     <div class="subcategory-grid">
@@ -39,8 +39,8 @@
     </div>
   </section>
   {{ end }}
-  {{ if and (eq .Section "categories") .Params.parentCategory }}
-    {{ $parentSlug := .Params.parentCategory | urlize }}
+  {{ if and (eq .Section "categories") .Params.parentcategory }}
+    {{ $parentSlug := .Params.parentcategory | urlize }}
     {{ $parentPath := printf "/categories/%s/_index.md" $parentSlug }}
     {{ with site.GetPage $parentPath }}
       {{ if gt (len .Pages) 1 }}
