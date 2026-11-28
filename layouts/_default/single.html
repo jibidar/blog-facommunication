@@ -18,7 +18,8 @@
   </nav>
 </article>
 {{ else }}
-{{ $isSubcategory := eq .Section "categories" }}
+{{ $isSubcategory := false }}
+{{ with .File }}{{ if and (strings.HasPrefix .Dir "categories/") (ne .BaseFileName "_index") }}{{ $isSubcategory = true }}{{ end }}{{ end }}
 {{ $parentSlug := "" }}
 {{ $parentCategoryName := "" }}
 {{ $parentSection := false }}
