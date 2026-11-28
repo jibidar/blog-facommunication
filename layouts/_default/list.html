@@ -34,9 +34,19 @@
     {{ $allArticles := where site.RegularPages "Section" "eq" "articles" }}
     {{ $categoryName := .Title }}
     {{ if $isSubcategory }}{{ $categoryName = $parentCategoryName }}{{ end }}
-    {{ $pages = where $allArticles "Params.categories" "intersect" (slice $categoryName) }}
     {{ if $isSubcategory }}
-      {{ $pages = where $pages "Params.subcategory" "eq" .Title }}
+      {{/* Match the saved subcategory value explicitly; keep this independent of the parent-category filter. */}}
+      {{ $wantedSubcategory := lower (strings.TrimSpace .Title) }}
+      {{ $subcategoryPages := slice }}
+      {{ range $allArticles }}
+        {{ $articleSubcategory := lower (strings.TrimSpace (printf "%v" .Params.subcategory)) }}
+        {{ if eq $articleSubcategory $wantedSubcategory }}
+          {{ $subcategoryPages = $subcategoryPages | append . }}
+        {{ end }}
+      {{ end }}
+      {{ $pages = $subcategoryPages }}
+    {{ else }}
+      {{ $pages = where $allArticles "Params.categories" "intersect" (slice $categoryName) }}
     {{ end }}
   {{ end }}
   {{ if and (eq .Section "categories") (not $isSubcategory) .Pages }}
