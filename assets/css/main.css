@@ -98,3 +98,16 @@
 .subcategory-badge{display:inline-flex;align-items:center;max-width:100%;padding:4px 10px;border-radius:999px;background:var(--red);color:#fff;font-size:.68rem;font-weight:800;line-height:1.4;letter-spacing:.025em;text-transform:none}
 .article-header .article-meta-row{gap:10px 14px;margin-bottom:14px}
 .article-header .subcategory-badge{font-size:.75rem;padding:6px 12px}
+
+
+/* Identité visuelle des rubriques et sous-rubriques. */
+.heading-icon{display:inline-grid;place-items:center;flex:0 0 auto;width:1.18em;height:1.18em;margin-right:.22em;border-radius:.28em;background:#fff0f0;color:var(--red);font-size:.78em;line-height:1;vertical-align:.08em}
+.listing-header h1,.prose-page-header h1{display:flex;align-items:center;gap:.2em}
+.vibrance-portrait{max-width:850px;margin:42px auto 0;display:grid;gap:30px}
+.vibrance-chapter{padding:28px 30px;border:1px solid var(--line);border-left:4px solid var(--red);border-radius:0 var(--radius) var(--radius) 0;background:linear-gradient(110deg,#fff 0%,#fffafa 100%)}
+.vibrance-chapter .eyebrow{margin-bottom:7px}
+.vibrance-chapter h2{font:800 clamp(1.35rem,2.5vw,1.8rem)/1.2 Manrope,sans-serif;letter-spacing:-.03em;margin:0 0 16px}
+.vibrance-chapter .prose{max-width:none;margin:0}
+.vibrance-chapter .prose p:first-child{margin-top:0}
+.vibrance-chapter .prose p:last-child{margin-bottom:0}
+@media(max-width:560px){.vibrance-chapter{padding:21px 18px}}
