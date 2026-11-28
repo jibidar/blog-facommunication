@@ -10,7 +10,7 @@
       {{ $parentCategoryName = .LinkTitle }}
     {{ end }}
   {{ end }}
-  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane">
+  <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane" data-debug-kind="{{ .Kind }}" data-debug-section="{{ .Section }}" data-debug-filedir="{{ .File.Dir }}">
     <ol>
       <li><a href="{{ "/" | relURL }}">Accueil</a></li>
       <li class="breadcrumb-separator" aria-hidden="true">/</li>
