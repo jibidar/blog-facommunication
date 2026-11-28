@@ -76,3 +76,18 @@
 /* Sous-rubriques : conserver des cartes lisibles sur tablette et mobile. */
 @media(max-width:850px){.subcategory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.subcategory-grid{grid-template-columns:1fr}.subcategory-section{padding:17px}}
+
+/* Fil d'Ariane : chemin réel, lisible et cohérent sur toutes les pages. */
+.breadcrumb{margin:0 0 24px}
+.breadcrumb ol{display:flex;align-items:center;flex-wrap:wrap;gap:9px;list-style:none;margin:0;padding:0}
+.breadcrumb li{font-size:.72rem;line-height:1.5;letter-spacing:.12em;text-transform:uppercase}
+.breadcrumb a{color:var(--muted);transition:color .18s ease}
+.breadcrumb a:hover{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.breadcrumb [aria-current="page"],.breadcrumb [aria-current="location"]{color:var(--red);font-weight:800}
+.breadcrumb-separator{color:#b7b1aa}
+.subcategory-siblings{margin:34px 0 38px;padding:24px;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius)}
+.subcategory-siblings h2{font:800 1.15rem Manrope,sans-serif;margin:0 0 16px}
+.subcategory-siblings .subcategory-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.subcategory-siblings .subcategory-card{padding:16px;background:#fff}
+@media(max-width:760px){.subcategory-siblings .subcategory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.subcategory-siblings{padding:17px}.subcategory-siblings .subcategory-grid{grid-template-columns:1fr}}
