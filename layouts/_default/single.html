@@ -18,13 +18,13 @@
   </nav>
 </article>
 {{ else }}
-{{ $isSubcategory := false }}
-{{ with .File }}{{ if and (strings.HasPrefix .Dir "categories/") (ne .BaseFileName "_index") }}{{ $isSubcategory = true }}{{ end }}{{ end }}
+{{ $pathParts := split (strings.Trim .RelPermalink "/") "/" }}
+{{ $isSubcategory := and (ge (len $pathParts) 3) (eq (index $pathParts 0) "categories") }}
 {{ $parentSlug := "" }}
 {{ $parentCategoryName := "" }}
 {{ $parentSection := false }}
 {{ if $isSubcategory }}
-  {{ $parentSlug = path.Base .File.Dir }}
+  {{ $parentSlug = index $pathParts 1 }}
   {{ $parentCategoryName = $parentSlug | humanize }}
   {{ $parentSection = site.GetPage (printf "/categories/%s/_index.md" $parentSlug) }}
   {{ with $parentSection }}{{ $parentCategoryName = .LinkTitle }}{{ end }}
