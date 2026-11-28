@@ -55,27 +55,45 @@ content:
       - name: subcategory
         label: Sous-rubrique
         type: select
-        description: "Facultatif. Choisir la sous-rubrique correspondant au sujet de l'article. Si une nouvelle sous-rubrique est créée, ajouter également son titre à cette liste dans .pages.yml."
+        description: "Facultatif. Les choix sont regroupés par rubrique principale. Sélectionner une sous-rubrique cohérente avec la rubrique choisie ci-dessus."
         options:
           values:
-            - Musique & scène
-            - Cinéma & audiovisuel
-            - Livres & patrimoine
-            - Portraits
-            - Parcours & métiers
-            - Initiatives
-            - Intelligence artificielle
-            - Innovation & tech
-            - Usages numériques
-            - Jeunesse & éducation
-            - Économie & société
-            - Environnement & citoyenneté
-            - Design & identité visuelle
-            - Photographie & vidéo
-            - Mode & création
-            - Visages
-            - Parcours singuliers
-            - Talents émergents
+            - name: Musique & scène
+              label: "Culture — Musique & scène"
+            - name: Cinéma & audiovisuel
+              label: "Culture — Cinéma & audiovisuel"
+            - name: Livres & patrimoine
+              label: "Culture — Livres & patrimoine"
+            - name: Portraits
+              label: "Talents — Portraits"
+            - name: Parcours & métiers
+              label: "Talents — Parcours & métiers"
+            - name: Initiatives
+              label: "Talents — Initiatives"
+            - name: Intelligence artificielle
+              label: "Digital — Intelligence artificielle"
+            - name: Innovation & tech
+              label: "Digital — Innovation & tech"
+            - name: Usages numériques
+              label: "Digital — Usages numériques"
+            - name: Jeunesse & éducation
+              label: "Société — Jeunesse & éducation"
+            - name: Économie & société
+              label: "Société — Économie & société"
+            - name: Environnement & citoyenneté
+              label: "Société — Environnement & citoyenneté"
+            - name: Design & identité visuelle
+              label: "Créativité — Design & identité visuelle"
+            - name: Photographie & vidéo
+              label: "Créativité — Photographie & vidéo"
+            - name: Mode & création
+              label: "Créativité — Mode & création"
+            - name: Visages
+              label: "Vibrance — Visages"
+            - name: Parcours singuliers
+              label: "Vibrance — Parcours singuliers"
+            - name: Talents émergents
+              label: "Vibrance — Talents émergents"
       - name: tags
         label: Mots-clés
         type: string
