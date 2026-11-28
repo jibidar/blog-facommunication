@@ -27,6 +27,11 @@
         const active = i === current;
         slide.classList.toggle("is-active", active);
         slide.setAttribute("aria-hidden", String(!active));
+        const sequenceNumber = String(i + 1).padStart(2, "0");
+        const coverIndex = slide.querySelector(".vibrance-cover-index");
+        const slideNumber = slide.querySelector(".vibrance-slide-number");
+        if (coverIndex) coverIndex.textContent = sequenceNumber + " / " + String(slides.length).padStart(2, "0");
+        if (slideNumber) slideNumber.textContent = sequenceNumber + " / VIBRANCE";
       });
       dots.forEach((dot, i) => {
         if (i === current) dot.setAttribute("aria-current", "true");
