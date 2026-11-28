@@ -1,10 +1,27 @@
 {{ define "main" }}
 <section class="container listing-page">
+  {{ $isSubcategory := false }}
+  {{ $parentSlug := "" }}
+  {{ $parentCategoryName := "" }}
+  {{ with .File }}
+    {{ if and (eq $.Section "categories") (ne .BaseFileName "_index") }}
+      {{ $isSubcategory = true }}
+      {{ $parentSlug = path.Base .Dir }}
+      {{ $parentCategoryName = $parentSlug | humanize }}
+      {{ with site.GetPage (printf "/categories/%s/_index.md" $parentSlug) }}
+        {{ $parentCategoryName = .LinkTitle }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
   <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane">
     <ol>
       <li><a href="{{ "/" | relURL }}">Accueil</a></li>
       <li class="breadcrumb-separator" aria-hidden="true">/</li>
-      {{ if eq .Section "categories" }}
+      {{ if $isSubcategory }}
+        <li><a href="{{ printf "/categories/%s/" $parentSlug | relURL }}">{{ $parentCategoryName }}</a></li>
+        <li class="breadcrumb-separator" aria-hidden="true">/</li>
+        <li aria-current="page">{{ .LinkTitle }}</li>
+      {{ else if eq .Section "categories" }}
         <li aria-current="page">{{ .LinkTitle }}</li>
       {{ else if eq .Section "articles" }}
         <li aria-current="page">Articles</li>
@@ -17,9 +34,14 @@
   {{ $pages := .Pages }}
   {{ if eq .Section "categories" }}
     {{ $allArticles := where site.RegularPages "Section" "eq" "articles" }}
-    {{ $pages = where $allArticles "Params.categories" "intersect" (slice .Title) }}
+    {{ $categoryName := .Title }}
+    {{ if $isSubcategory }}{{ $categoryName = $parentCategoryName }}{{ end }}
+    {{ $pages = where $allArticles "Params.categories" "intersect" (slice $categoryName) }}
+    {{ if $isSubcategory }}
+      {{ $pages = where $pages "Params.subcategory" "eq" .Title }}
+    {{ end }}
   {{ end }}
-  {{ if and (eq .Section "categories") .Pages }}
+  {{ if and (eq .Section "categories") (not $isSubcategory) .Pages }}
   <section class="subcategory-section" aria-label="Sous-rubriques de {{ .Title }}">
     <h2>Explorer {{ .Title }}</h2>
     <div class="subcategory-grid">
@@ -28,6 +50,23 @@
       {{ end }}
     </div>
   </section>
+  {{ end }}
+  {{ if and $isSubcategory }}
+    {{ $parentPath := printf "/categories/%s/_index.md" $parentSlug }}
+    {{ with site.GetPage $parentPath }}
+      {{ if gt (len .Pages) 1 }}
+      <nav class="subcategory-siblings" aria-label="Autres sous-rubriques de {{ $parentCategoryName }}">
+        <h2>Explorer aussi dans {{ $parentCategoryName }}</h2>
+        <div class="subcategory-grid">
+          {{ range .Pages.ByWeight }}
+            {{ if ne .RelPermalink $.RelPermalink }}
+              <a class="subcategory-card" href="{{ .RelPermalink }}"><strong>{{ .LinkTitle }}</strong>{{ with .Description }}<span>{{ . }}</span>{{ end }}<small>Explorer →</small></a>
+            {{ end }}
+          {{ end }}
+        </div>
+      </nav>
+      {{ end }}
+    {{ end }}
   {{ end }}
   {{ $paginator := .Paginate $pages }}
   <div class="article-grid">
