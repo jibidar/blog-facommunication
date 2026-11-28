@@ -16,16 +16,16 @@ author: Ayi Yann Yves JIBIDAR
 cover: /images/vanessajohnsoncouv.jpg
 vibrance_origins: |-
   AU DELÀ DE L'IMAGE  
-  Vanessa Montgolfier Johnson est une   
-  personnalité togolaise évoluant dans l'univers   
+  Vanessa Montgolfier Johnson est une  
+  personnalité togolaise évoluant dans l'univers  
   de la mode et de la création de contenus.  
-    
-  À travers ses publications, elle partage   
-  différentes facettes de son univers   
-  photographie, élégance, expression   
+
+  À travers ses publications, elle partage  
+  différentes facettes de son univers  
+  photographie, élégance, expression  
   personnelle et art de vivre.  
-    
-  Une présence digitale qui laisse entrevoir une   
+
+  Une présence digitale qui laisse entrevoir une  
   personnalité aux multiples centres d'intérêt
 vibrance_origins_image: /images/vanessajohnson2.jpg
 vibrance_journey: >-
@@ -34,28 +34,32 @@ vibrance_journey: >-
   La mode n'est pas la seule forme  
 
   d'expression qui apparaît dans son univers.  
-    
+
+
   Ses publications révèlent également un  
 
   intérêt pour les mots, la poésie et la  
 
   littérature.  
-    
+
+
   Entre images, styles vestimentaires et textes poétiques, Vanessa explore
   différentes façons de partager sa sensibilité et sa créativité.
 vibrance_journey_image: /images/vanessajohnson3.jpg
-vibrance_vision: >
+vibrance_vision: >-
   UNE PERSONNALITÉ À DÉCOUVRIR  
 
   Derrière les photographies et les publications se dessine un univers
   personnel, fait d'esthétique, de créativité et d'expression.  
-    
+
+
   Vanessa Johnson mérite aussi d'être  
 
   découverte à travers ses passions, ses  
 
   inspirations et ses projets.  
-    
+
+
   Et vous, connaissiez-vous Vanessa Johnson ?  
 vibrance_vision_image: /images/vanessajohnson4.jpg
 vibrance_spark: |2-
