@@ -58,7 +58,7 @@
     <section class="subcategory-articles" aria-label="Articles de {{ .Title }}">
       <h2>Les articles de cette sous-rubrique</h2>
       <div class="article-grid">
-        {{ range $subcategoryArticles.ByDate.Reverse }}
+        {{ range sort $subcategoryArticles "Date" "desc" }}
           {{ $article := . }}
           <article class="article-card">
             {{ with $article.Params.cover }}<a class="article-cover" href="{{ $article.RelPermalink }}"><img src="{{ . | relURL }}" alt="{{ $article.Title | plainify }}" loading="lazy"></a>{{ else }}<a class="article-cover cover-placeholder" href="{{ $article.RelPermalink }}" aria-label="Lire {{ $article.Title }}"><span>WO</span></a>{{ end }}
