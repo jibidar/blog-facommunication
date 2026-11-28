@@ -42,8 +42,8 @@ jobs:
           grep -q 'aria-current="page">Articles' public/articles/index.html
           test -s public/categories/index.html
           grep -q 'aria-current="page">Culture' public/categories/culture/index.html
-          grep -q 'href="/categories/culture/">Culture</a>' public/categories/culture/livres-patrimoine/index.html
-          grep -q 'aria-current="page">Livres &amp; patrimoine' public/categories/culture/livres-patrimoine/index.html
+          grep -q 'href=/categories/culture/>Culture</a>' public/categories/culture/livres-patrimoine/index.html
+          grep -q 'aria-current=page>Livres & patrimoine' public/categories/culture/livres-patrimoine/index.html
           grep -q 'Autres sous-rubriques de Culture' public/categories/culture/livres-patrimoine/index.html
           test -s public/categories/culture/index.html
           test -s public/categories/talents/index.html
@@ -75,11 +75,3 @@ jobs:
           test -s public-production/confidentialite/index.html
           ! grep -q "Wo : la curiosité de rester en éveil" public-production/index.json
 
-      - name: Upload temporary rendered site for inspection
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: hugo-rendered-debug
-          path: public
-          if-no-files-found: ignore
-          retention-days: 1
