@@ -1,16 +1,14 @@
 {{ define "main" }}
 <section class="container listing-page">
-  {{ $isSubcategory := false }}
+  {{ $pathParts := split (strings.Trim .RelPermalink "/") "/" }}
+  {{ $isSubcategory := and (ge (len $pathParts) 3) (eq (index $pathParts 0) "categories") }}
   {{ $parentSlug := "" }}
   {{ $parentCategoryName := "" }}
-  {{ with .File }}
-    {{ if and (strings.HasPrefix .Dir "categories/") (ne .BaseFileName "_index") }}
-      {{ $isSubcategory = true }}
-      {{ $parentSlug = path.Base .Dir }}
-      {{ $parentCategoryName = $parentSlug | humanize }}
-      {{ with site.GetPage (printf "/categories/%s/_index.md" $parentSlug) }}
-        {{ $parentCategoryName = .LinkTitle }}
-      {{ end }}
+  {{ if $isSubcategory }}
+    {{ $parentSlug = index $pathParts 1 }}
+    {{ $parentCategoryName = $parentSlug | humanize }}
+    {{ with site.GetPage (printf "/categories/%s/_index.md" $parentSlug) }}
+      {{ $parentCategoryName = .LinkTitle }}
     {{ end }}
   {{ end }}
   <nav class="breadcrumb eyebrow" aria-label="Fil d’Ariane">
